@@ -1,0 +1,25 @@
+<UI version="4.0" >
+ <class>TianLi_MapClass</class>
+ <widget class="QWidget" name="TianLi_MapClass" >
+  <property name="objectName" >
+   <string notr="true">TianLi_MapClass</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>TianLi_Map</string>
+  </property>$centralwidget$
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+   <include location="TianLi_Map.qrc"/>
+ </resources>
+ <connections/>
+</UI>
