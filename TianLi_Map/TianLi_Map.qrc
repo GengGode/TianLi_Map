@@ -1,4 +1,33 @@
 <RCC>
-    <qresource prefix="TianLi_Map">
-    </qresource>
+  <qresource prefix="TianLi_Map"/>
+  <qresource prefix="MainUI">
+    <file>Resource/MainUI/main_bg.png</file>
+  </qresource>
+  <qresource prefix="MainUI_Exit">
+    <file>Resource/MainUI/exit_pushbutton/exit_0.png</file>
+    <file>Resource/MainUI/exit_pushbutton/exit_1.png</file>
+  </qresource>
+  <qresource prefix="MainUI_Tab">
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_1_0.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_1_1.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_1_2.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_2_0.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_2_1.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_2_2.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_3_0.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_3_1.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_3_2.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_4_0.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_4_1.png</file>
+    <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_4_2.png</file>
+  </qresource>
+  <qresource prefix="test">
+    <file>Resource/UI_ImgTab_Event4_2.png</file>
+    <file>Resource/fafasda.png</file>
+    <file>Resource/UI_ImgTab_Dungeon1.png</file>
+    <file>Resource/UI_ImgTab_Event1.png</file>
+    <file>Resource/UI_ImgTab_Event4.png</file>
+    <file>Resource/UI_ImgTab_Monster1.png</file>
+    <file>Resource/UI_ImgTab1_fit 1.png</file>
+  </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QGraphicsDropShadowEffect>
 #include <QtWidgets/QWidget>
 #include "ui_TianLi_Map.h"
 
@@ -12,4 +13,7 @@ public:
 
 private:
     Ui::TianLi_MapClass ui;
+
+private slots:
+	void Exit();
 };
