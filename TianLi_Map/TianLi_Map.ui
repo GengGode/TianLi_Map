@@ -27,7 +27,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:rgba(0, 0, 0, 0);
-background-image:url(:/test/Resource/fafasda.png);</string>
+background-image:url(:/MainUI/Resource/MainUI/main_bg.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -278,45 +278,953 @@ image:url(:/MainUI_Exit/Resource/MainUI/exit_pushbutton/exit_1.png);
     <string/>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QStackedWidget" name="MainWidget_Page">
    <property name="geometry">
     <rect>
-     <x>183</x>
-     <y>58</y>
-     <width>335</width>
-     <height>47</height>
+     <x>180</x>
+     <y>30</y>
+     <width>1251</width>
+     <height>771</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Adobe Devanagari</family>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox{
-background-color:rgba(255, 255, 255, 120);
-border:none;
-border-radius:21px;
-color:rgb(85, 85, 0);
-}
+    <string notr="true">QStackedWidget&gt;QWidget{
+background-color:rgba(255, 255, 255, 0);
+}</string>
+   </property>
+   <widget class="QWidget" name="Page_1">
+    <widget class="QComboBox" name="comboBox_P1_Top">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>27</y>
+       <width>335</width>
+       <height>47</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>汉仪文黑-85W</family>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+background-color:rgba(255, 255, 255, 0);
 
+border: 2px solid rgb(220, 207, 190); 
+border-radius:21px;
+padding-left:16px;
+padding-Top:1px;
+
+font-size:24px;
+color:rgb(134, 99, 67);
+}
+QComboBox:hover{
+border-color:rgb(255, 204, 50);
+}
 QComboBox::drop-down{
 
-height:42px;
+font-size:20;
+height:20px;
 width:42px;
-border-radius:21px;
+border-radius:5px;
 background-color:rgba(255, 255, 255,50);
-border-left: 10px solid #ffffff; 
+border: 10px solid #ffffff; 
 }    
 
 QComboBox::down-arrow {
-border:none;
+
 border-radius:21px;
 height:10px;
 width:20px;
+
 }     </string>
-   </property>
-   <property name="editable">
-    <bool>false</bool>
-   </property>
-   <property name="currentText">
-    <string/>
-   </property>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string>全部</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>全部</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>蒙德</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidget_P1_ObjectPage">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>90</y>
+       <width>871</width>
+       <height>641</height>
+      </rect>
+     </property>
+     <widget class="QWidget" name="page">
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>841</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(0, 0, 0, 0));</string>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>822</width>
+          <height>800</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>800</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_2"/>
+    </widget>
+    <widget class="QScrollArea" name="scrollArea_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>320</width>
+       <height>605</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>605</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>320</width>
+       <height>605</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QScrollArea{
+border:none;
+background-color:rgba(255,255,255,0);
+}
+QScrollBar:vertical{ 
+border:none;
+width:0px;
+}
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical{ 
+border:none;
+}
+
+QScrollBar::handle:vertical{
+border:none;
+ }
+
+QScrollBar::handle:vertical:hover,QScrollBar::handle:vertical:pressed{ 
+border:none;
+}
+
+QScrollBar::sub-line:vertical{
+border:none;
+ }
+
+QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:pressed{ 
+border:none;
+}
+
+QScrollBar::add-line:vertical{
+border:none;
+
+}
+
+QScrollBar::add-line:vertical:hover,QScrollBar::add-line:vertical:pressed{ 
+border:none;
+}</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>310</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>310</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>310</width>
+        <height>1000</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+border:none;
+background-color:rgba(255,255,255,0);
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <property name="leftMargin">
+        <number>34</number>
+       </property>
+       <property name="topMargin">
+        <number>12</number>
+       </property>
+       <property name="rightMargin">
+        <number>34</number>
+       </property>
+       <property name="bottomMargin">
+        <number>12</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_01.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>特殊</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_02.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>特产</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_03.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>矿物</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_04.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>怪物</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_05.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>食材</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_06.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>炼金</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_11">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_07.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>家园</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_12">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>汉仪文黑-85W</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color:rgb(240, 233, 224);
+border:2px solid rgb(226, 217, 207);
+font-size:26px;
+color:rgb(134, 98, 66);
+
+padding-left: 18px;
+padding-right: -45px;
+padding-top:15px;
+padding-bottom:15px;
+background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/P1UI_TabList/Resource/P1UI_TabList/icon_08.png);
+
+}
+
+QPushButton:hover{
+background-color:rgb(215, 202, 187);
+border:1px solid rgb(207, 192, 175);
+font-size:26px;
+color:rgb(132, 96, 64);
+}
+
+QPushButton:pressed{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}
+
+QPushButton:checked{
+background-color:rgb(171, 145, 120);
+border:2px solid rgb(172, 148, 122);
+font-size:26px;
+color:rgb(255, 255, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>活动</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>320</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(238, 230, 221, 255), stop:1 rgba(238, 230, 221, 0));
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>703</y>
+       <width>320</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(238, 230, 221, 255), stop:1 rgba(238, 230, 221, 0));
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Page_2">
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>190</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Page_3">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>350</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Page_4">
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>230</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CheckBox</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>260</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CheckBox</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -326,5 +1234,6 @@ width:20px;
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

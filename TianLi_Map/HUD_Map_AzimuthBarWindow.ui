@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HUD_Map_AzimuthBarWindow</class>
+ <widget class="QWidget" name="HUD_Map_AzimuthBarWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>172</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>HUD_Map_AzimuthBarWindow</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>69</width>
+     <height>66</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/lm.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>50</y>
+     <width>69</width>
+     <height>66</height>
+    </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/rm.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>82</y>
+     <width>756</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/Line 1.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>44</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/ObjectList2.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="TianLi_Map.qrc">:/test/Resource/test/ObjectList2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>44</y>
+     <width>31</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/Component 7.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>40</y>
+     <width>54</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/Component 8.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>30</y>
+     <width>71</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/Component 9.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="TianLi_Map.qrc"/>
+ </resources>
+ <connections/>
+</ui>

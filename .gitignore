@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/TianLi_Map/Resource/P1UI_TabList/新建文本文档.txt

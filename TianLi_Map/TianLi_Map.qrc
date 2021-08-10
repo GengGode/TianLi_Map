@@ -1,5 +1,36 @@
 <RCC>
   <qresource prefix="TianLi_Map"/>
+  <qresource prefix="test">
+    <file>Resource/test/Component 7.png</file>
+    <file>Resource/test/Component 8.png</file>
+    <file>Resource/test/Component 9.png</file>
+    <file>Resource/test/Line 1.png</file>
+    <file>Resource/test/lm.png</file>
+    <file>Resource/test/rm.png</file>
+    <file>Resource/test/ObjectList0.png</file>
+    <file>Resource/test/ObjectList1.png</file>
+    <file>Resource/test/ObjectList2.png</file>
+    <file>Resource/test/ObjectList3.png</file>
+    <file>Resource/test/图层 3.png</file>
+    <file>Resource/test/图层 4.png</file>
+    <file>Resource/test/图层 5.png</file>
+    <file>Resource/test/图层 6.png</file>
+    <file>Resource/test/图层 7.png</file>
+    <file>Resource/test/图层 8.png</file>
+    <file>Resource/test/图层 9.png</file>
+    <file>Resource/test/图层 10.png</file>
+    <file>Resource/test/图层 11.png</file>
+    <file>Resource/test/图层 12.png</file>
+    <file>Resource/test/图层 13.png</file>
+    <file>Resource/test/图层 14.png</file>
+    <file>Resource/test/图层 15.png</file>
+    <file>Resource/test/图层 16.png</file>
+    <file>Resource/test/图层 17.png</file>
+    <file>Resource/test/图层 N.png</file>
+  </qresource>
+  <qresource prefix="tr">
+    <file>TianLi_Map_ZH.qm</file>
+  </qresource>
   <qresource prefix="MainUI">
     <file>Resource/MainUI/main_bg.png</file>
   </qresource>
@@ -21,13 +52,14 @@
     <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_4_1.png</file>
     <file>Resource/MainUI/tab_pushbutton/UI_ImgTab_4_2.png</file>
   </qresource>
-  <qresource prefix="test">
-    <file>Resource/UI_ImgTab_Event4_2.png</file>
-    <file>Resource/fafasda.png</file>
-    <file>Resource/UI_ImgTab_Dungeon1.png</file>
-    <file>Resource/UI_ImgTab_Event1.png</file>
-    <file>Resource/UI_ImgTab_Event4.png</file>
-    <file>Resource/UI_ImgTab_Monster1.png</file>
-    <file>Resource/UI_ImgTab1_fit 1.png</file>
+  <qresource prefix="P1UI_TabList">
+    <file>Resource/P1UI_TabList/icon_01.png</file>
+    <file>Resource/P1UI_TabList/icon_02.png</file>
+    <file>Resource/P1UI_TabList/icon_03.png</file>
+    <file>Resource/P1UI_TabList/icon_04.png</file>
+    <file>Resource/P1UI_TabList/icon_05.png</file>
+    <file>Resource/P1UI_TabList/icon_06.png</file>
+    <file>Resource/P1UI_TabList/icon_07.png</file>
+    <file>Resource/P1UI_TabList/icon_08.png</file>
   </qresource>
 </RCC>

@@ -21,8 +21,7 @@
     <ApplicationTypeRevision Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</ApplicationTypeRevision>
     <DefaultLanguage Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">en</DefaultLanguage>
     <AppContainerApplication Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">true</AppContainerApplication>
-    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')"
-      >$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -52,11 +51,8 @@
     <QtDeployToProjectDir>true</QtDeployToProjectDir>
     <QtDeployVsContent>true</QtDeployVsContent>
   </PropertyGroup>
-  <Target Name="QtMsBuildNotFound"
-    BeforeTargets="CustomBuild;ClCompile"
-    Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
-    <Message Importance="High"
-      Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
@@ -107,11 +103,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="TianLi_Map.qrc"/>
-    <QtUic Include="TianLi_Map.ui"/>
-    <QtMoc Include="TianLi_Map.h"/>
-    <ClCompile Include="TianLi_Map.cpp"/>
-    <ClCompile Include="main.cpp"/>
+    <QtRcc Include="TianLi_Map.qrc" />
+    <QtUic Include="HUD_Map_AzimuthBarWindow.ui" />
+    <QtUic Include="HUD_Map_CircularWindow.ui" />
+    <QtUic Include="HUD_Map_SquareWindow.ui" />
+    <QtUic Include="TianLi_Map.ui" />
+    <QtMoc Include="TianLi_Map.h" />
+    <ClCompile Include="HUD_Map_AzimuthBarWindow.cpp" />
+    <ClCompile Include="HUD_Map_CircularWindow.cpp" />
+    <ClCompile Include="HUD_Map_SquareWindow.cpp" />
+    <ClCompile Include="TianLi_Map.cpp" />
+    <ClCompile Include="main.cpp" />
     <AppxManifest Include="Package.appxmanifest">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
     </AppxManifest>
@@ -127,6 +129,18 @@
     <Image Include="assets/logo_44x44.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtTranslation Include="TianLi_Map_ZH.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HUD_Map_SquareWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HUD_Map_CircularWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HUD_Map_AzimuthBarWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
