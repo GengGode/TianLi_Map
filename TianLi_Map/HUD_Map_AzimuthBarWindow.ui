@@ -13,10 +13,10 @@
   <property name="windowTitle">
    <string>HUD_Map_AzimuthBarWindow</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_Arrow_Left">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>50</y>
      <width>69</width>
      <height>66</height>
@@ -31,10 +31,10 @@ background-image:url(:/test/Resource/test/lm.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="label_Arrow_Right">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>836</x>
      <y>50</y>
      <width>69</width>
      <height>66</height>
@@ -52,10 +52,10 @@ background-image:url(:/test/Resource/test/rm.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="label_Line_Base">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>82</y>
      <width>756</width>
      <height>3</height>
@@ -70,55 +70,13 @@ background-image:url(:/test/Resource/test/Line 1.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>490</x>
-     <y>44</y>
-     <width>64</width>
-     <height>64</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-repeat:no-repeat;
-background-origin:content;
-background-image:url(:/test/Resource/test/ObjectList2.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="TianLi_Map.qrc">:/test/Resource/test/ObjectList2.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>44</y>
-     <width>31</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-repeat:no-repeat;
-background-origin:content;
-background-image:url(:/test/Resource/test/Component 7.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="label_Flag_N">
    <property name="geometry">
     <rect>
      <x>220</x>
      <y>40</y>
-     <width>54</width>
-     <height>91</height>
+     <width>28</width>
+     <height>87</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -130,13 +88,13 @@ background-image:url(:/test/Resource/test/Component 8.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="label_test">
    <property name="geometry">
     <rect>
      <x>650</x>
-     <y>30</y>
-     <width>71</width>
-     <height>111</height>
+     <y>38</y>
+     <width>64</width>
+     <height>89</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -148,13 +106,11 @@ background-image:url(:/test/Resource/test/Component 9.png);</string>
     <string/>
    </property>
   </widget>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_7</zorder>
+  <zorder>label_Arrow_Left</zorder>
+  <zorder>label_Line_Base</zorder>
+  <zorder>label_Arrow_Right</zorder>
+  <zorder>label_Flag_N</zorder>
+  <zorder>label_test</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

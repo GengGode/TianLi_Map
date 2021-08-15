@@ -26,11 +26,18 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 	connect_UI_Tab();
 	init_UI_Tab_1();
 
+#pragma region Test
+	t = new QTimer();
+	connect(t, &QTimer::timeout, this, &TianLi_Map::test);
+	t->start(300);
+#pragma endregion
 
 	if (WidgetMapAB == nullptr)
 	{
 		WidgetMapAB = new HUD_Map_AzimuthBarWindow();
 		WidgetMapAB->show();
+		WidgetMapAB->setTopMost(true);
+		WidgetMapAB->update();
 }
 	else
 	{
@@ -69,6 +76,20 @@ void TianLi_Map::Exit()
 	this->showMinimized();
 	//close();
 }
+
+#pragma region Test
+void TianLi_Map::test()
+{
+	static int b = 0;
+	WidgetMapAB->setAvatarRotation(b);
+	b = b + 10;
+	if (b > 50)
+	{
+		b = -50;
+	}
+}
+#pragma endregion
+
 
 void TianLi_Map::TabButtonSwitch()
 {

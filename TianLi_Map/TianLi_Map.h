@@ -1,6 +1,9 @@
 #pragma once
 
 #include <QList>
+#pragma region Test
+#include <QTimer>
+#pragma endregion
 #include <QPushButton>
 #include <QGraphicsDropShadowEffect>
 #include <QtWidgets/QWidget>
@@ -27,12 +30,20 @@ private:
 	QGraphicsDropShadowEffect *TabShadow;
 
 	QList<QPushButton*> pushButton_UI_Tab;
+
+#pragma region Test
+	QTimer *t = nullptr;
+#pragma endregion
 private:
 	void connect_UI_Tab();
 	void init_UI_Tab_1();
 
 private slots:
 	void Exit();
+
+#pragma region Test
+	void test();
+#pragma endregion
 
 private:
 	void TabButtonSwitch();
