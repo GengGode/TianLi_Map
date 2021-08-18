@@ -73,7 +73,7 @@ background-image:url(:/test/Resource/test/Line 1.png);</string>
   <widget class="QLabel" name="label_Flag_N">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>444</x>
      <y>40</y>
      <width>28</width>
      <height>87</height>
@@ -88,29 +88,10 @@ background-image:url(:/test/Resource/test/Component 8.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_test">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>38</y>
-     <width>64</width>
-     <height>89</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-repeat:no-repeat;
-background-origin:content;
-background-image:url(:/test/Resource/test/Component 9.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <zorder>label_Arrow_Left</zorder>
   <zorder>label_Line_Base</zorder>
   <zorder>label_Arrow_Right</zorder>
   <zorder>label_Flag_N</zorder>
-  <zorder>label_test</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

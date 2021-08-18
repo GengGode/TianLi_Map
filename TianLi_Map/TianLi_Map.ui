@@ -1198,7 +1198,7 @@ color:rgb(255, 255, 255);
     </widget>
    </widget>
    <widget class="QWidget" name="Page_4">
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="checkBox_W_ABW">
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -1211,11 +1211,24 @@ color:rgb(255, 255, 255);
       <string>CheckBox</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="checkBox_W_CW">
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>260</y>
+       <y>270</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CheckBox</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_W_SW">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>310</y>
        <width>71</width>
        <height>16</height>
       </rect>
@@ -1233,7 +1246,7 @@ color:rgb(255, 255, 255);
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

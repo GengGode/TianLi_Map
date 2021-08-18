@@ -7,11 +7,11 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 	this->setWindowFlags(Qt::FramelessWindowHint);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 
-	QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect;
-	shadow->setOffset(0, 0);
-	shadow->setColor(QColor(0, 0, 0, 255));
-	shadow->setBlurRadius(15);
-	ui.label->setGraphicsEffect(shadow);
+	MainShadow = new QGraphicsDropShadowEffect;
+	MainShadow->setOffset(0, 0);
+	MainShadow->setColor(QColor(0, 0, 0, 255));
+	MainShadow->setBlurRadius(15);
+	ui.label->setGraphicsEffect(MainShadow);
 
 #ifdef TabButtonEffect
 	TabShadow = new QGraphicsDropShadowEffect;
@@ -29,7 +29,7 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 #pragma region Test
 	t = new QTimer();
 	connect(t, &QTimer::timeout, this, &TianLi_Map::test);
-	t->start(300);
+	t->start(1);
 #pragma endregion
 
 	if (WidgetMapAB == nullptr)
@@ -38,12 +38,11 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 		WidgetMapAB->show();
 		WidgetMapAB->setTopMost(true);
 		WidgetMapAB->update();
-}
+	}
 	else
 	{
 		WidgetMapAB->show();
 	}
-
 }
 
 void TianLi_Map::connect_UI_Tab()
@@ -71,6 +70,19 @@ void TianLi_Map::init_UI_Tab_1()
 		[=](int index) { ui.stackedWidget_P1_ObjectPage->setCurrentIndex(index); });
 }
 
+void TianLi_Map::init_UI_Tab_4()
+{
+	checkBox_Page_Switch.clear();
+	checkBox_Page_Switch.append(ui.checkBox_W_ABW);
+	checkBox_Page_Switch.append(ui.checkBox_W_CW);
+	checkBox_Page_Switch.append(ui.checkBox_W_SW);
+
+	for (int i = 0; i < checkBox_Page_Switch.size(); i++)
+	{
+		connect(checkBox_Page_Switch[i], &QCheckBox::clicked, this, &TianLi_Map::TabButtonSwitch);
+	}
+}
+
 void TianLi_Map::Exit()
 {
 	this->showMinimized();
@@ -80,12 +92,17 @@ void TianLi_Map::Exit()
 #pragma region Test
 void TianLi_Map::test()
 {
-	static int b = 0;
-	WidgetMapAB->setAvatarRotation(b);
-	b = b + 10;
-	if (b > 50)
+	static bool isc = false;
+	if (isc == false)
 	{
-		b = -50;
+		isc = true;
+		static double a = 0;
+		bool res = GetRotation(a);
+		if (res)
+		{
+			WidgetMapAB->setAvatarRotation(a);
+		}
+		isc = false;
 	}
 }
 #pragma endregion

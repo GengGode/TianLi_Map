@@ -64,6 +64,9 @@
     <ClCompile Include="HUD_Map_AzimuthBarWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QTL_FlagObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="TianLi_Map_ZH.ts">
@@ -80,6 +83,9 @@
     <QtMoc Include="HUD_Map_AzimuthBarWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="QTL_FlagObject.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="HUD_Map_SquareWindow.ui">
@@ -89,6 +95,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="HUD_Map_AzimuthBarWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="QTL_FlagObject.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

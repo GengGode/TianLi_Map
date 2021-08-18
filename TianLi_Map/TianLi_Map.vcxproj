@@ -66,9 +66,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <AdditionalDependencies>cvAutoTrack.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>cvAutoTrack.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -107,11 +121,13 @@
     <QtUic Include="HUD_Map_AzimuthBarWindow.ui" />
     <QtUic Include="HUD_Map_CircularWindow.ui" />
     <QtUic Include="HUD_Map_SquareWindow.ui" />
+    <QtUic Include="QTL_FlagObject.ui" />
     <QtUic Include="TianLi_Map.ui" />
     <QtMoc Include="TianLi_Map.h" />
     <ClCompile Include="HUD_Map_AzimuthBarWindow.cpp" />
     <ClCompile Include="HUD_Map_CircularWindow.cpp" />
     <ClCompile Include="HUD_Map_SquareWindow.cpp" />
+    <ClCompile Include="QTL_FlagObject.cpp" />
     <ClCompile Include="TianLi_Map.cpp" />
     <ClCompile Include="main.cpp" />
     <AppxManifest Include="Package.appxmanifest">
@@ -141,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HUD_Map_AzimuthBarWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QTL_FlagObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

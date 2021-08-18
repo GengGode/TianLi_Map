@@ -3,7 +3,9 @@
 #include <QList>
 #pragma region Test
 #include <QTimer>
+#include <cvAutoTrack.h>
 #pragma endregion
+#include <QCheckBox>
 #include <QPushButton>
 #include <QGraphicsDropShadowEffect>
 #include <QtWidgets/QWidget>
@@ -27,16 +29,23 @@ private:
 private:
     Ui::TianLi_MapClass ui;
 
-	QGraphicsDropShadowEffect *TabShadow;
+	QGraphicsDropShadowEffect *MainShadow = nullptr;
+
+#ifdef TabButtonEffect
+	QGraphicsDropShadowEffect *TabShadow = nullptr;
+#endif
 
 	QList<QPushButton*> pushButton_UI_Tab;
+	QList<QCheckBox*> checkBox_Page_Switch;
 
 #pragma region Test
 	QTimer *t = nullptr;
 #pragma endregion
+
 private:
 	void connect_UI_Tab();
 	void init_UI_Tab_1();
+	void init_UI_Tab_4();
 
 private slots:
 	void Exit();
