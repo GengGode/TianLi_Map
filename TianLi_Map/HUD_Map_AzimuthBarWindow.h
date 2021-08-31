@@ -27,7 +27,7 @@ private:
 	bool isShow = true;
 	bool isTopMost = true;
 	
-	double avatarRotationRange = 45;
+	double avatarRotationRange = 90;
 	double avatarRotation = 0;
 
 	std::vector<QTL_FlagObject*> Flags_ObjectList;

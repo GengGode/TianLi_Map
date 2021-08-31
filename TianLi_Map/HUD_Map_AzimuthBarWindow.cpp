@@ -98,43 +98,67 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 	}
 }
 
+void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
+{
+	int x = static_cast<int>(80 + 378 - ui.label_Flag_S->width() / 2 + ((378 - ui.label_Flag_S->width() / 2) * value));
+
+	if (value >= -1 && value <= 1)
+	{
+		ui.label_Flag_S->move(x, ui.label_Flag_S->y());
+		ui.label_Flag_S->show();
+	}
+	else
+	{
+		ui.label_Flag_S->hide();
+	}
+}
+
 void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 {
 	int x = static_cast<int>(80 + 378 - ui.label_Flag_N->width() / 2 + ((378 - ui.label_Flag_N->width() / 2) * value));
 
-	int xw = static_cast<int>(80 + 378 - ui.label_Flag_W->width() / 2 + ((378 - ui.label_Flag_W->width() / 2) * (value - 90.0)));
-	int xn = static_cast<int>(80 + 378 - ui.label_Flag_N->width() / 2 + ((378 - ui.label_Flag_N->width() / 2) * (value + 90)));
-	int xs = static_cast<int>(80 + 378 - ui.label_Flag_S->width() / 2 + ((378 - ui.label_Flag_S->width() / 2) * (value - 180.0)));
-	int xe = static_cast<int>(80 + 378 - ui.label_Flag_E->width() / 2 + ((378 - ui.label_Flag_E->width() / 2) * (value + 90.0)));
-
 	if (value >= -1 && value <= 1)
 	{
-		ui.label_Flag_N->move(x, 10);
+		ui.label_Flag_N->move(x, ui.label_Flag_N->y());
 
-		Flags_ObjectList[0]->move(x+30, 10);
+		Flags_ObjectList[0]->move(x + 30, 12);
 		Flags_ObjectList[0]->setShowText(false);
-		Flags_ObjectList[0]->setDistance(value*100);
+		Flags_ObjectList[0]->setDistance(value * 100);
 		Flags_ObjectList[0]->setTransparent(value);
-
-		//Flags_ObjectList[1]->move(x-30, 40);
-		//Flags_ObjectList[1]->setDistance(value * 80);
-		//Flags_ObjectList[1]->setTransparent(value);
-
-		//Flags_ObjectList[2]->move(x+20, 40);
-		//Flags_ObjectList[2]->setDistance(value * 80);
-		//Flags_ObjectList[2]->setTransparent(value);
-		//QPropertyAnimation *animation = new QPropertyAnimation(ui.label_Flag_N, "geometry");
-		//animation->setDuration(100);
-		//animation->setStartValue(QRect(ui.label_Flag_N->x(), ui.label_Flag_N->y(), ui.label_Flag_N->width(), ui.label_Flag_N->height()));
-		//animation->setEndValue(QRect(x,10, ui.label_Flag_N->width(), ui.label_Flag_N->height()));
-		//animation->setEasingCurve(QEasingCurve::Linear);
-		//animation->start(QAbstractAnimation::DeleteWhenStopped);
 
 		ui.label_Flag_N->show();
 	}
 	else
 	{
 		ui.label_Flag_N->hide();
+	}
+}
+void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
+{
+	int x = static_cast<int>(80 + 378 - ui.label_Flag_W->width() / 2 + ((378 - ui.label_Flag_W->width() / 2) * value));
+
+	if (value >= -1 && value <= 1)
+	{
+		ui.label_Flag_W->move(x, ui.label_Flag_W->y());
+		ui.label_Flag_W->show();
+	}
+	else
+	{
+		ui.label_Flag_W->hide();
+	}
+}
+void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
+{
+	int x = static_cast<int>(80 + 378 - ui.label_Flag_E->width() / 2 + ((378 - ui.label_Flag_E->width() / 2) * value));
+
+	if (value >= -1 && value <= 1)
+	{
+		ui.label_Flag_E->move(x, ui.label_Flag_E->y());
+		ui.label_Flag_E->show();
+	}
+	else
+	{
+		ui.label_Flag_E->hide();
 	}
 }
 
@@ -169,7 +193,11 @@ void HUD_Map_AzimuthBarWindow::setFlagN(double RelativeAngle)
 }
 void HUD_Map_AzimuthBarWindow::setFlagW(double RelativeAngle)
 {
-	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	if (RelativeAngle < -180)
+	{
+		RelativeAngle = RelativeAngle + 360;
+	}
+n	double value = RelativeAngle / (avatarRotationRange / 2.0);
 	setFlagW_Range(value);
 }
 void HUD_Map_AzimuthBarWindow::setFlagE(double RelativeAngle)
