@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>172</height>
+    <width>915</width>
+    <height>106</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>50</y>
+     <y>20</y>
      <width>69</width>
      <height>66</height>
     </rect>
@@ -35,7 +35,7 @@ background-image:url(:/test/Resource/test/lm.png);</string>
    <property name="geometry">
     <rect>
      <x>836</x>
-     <y>50</y>
+     <y>20</y>
      <width>69</width>
      <height>66</height>
     </rect>
@@ -56,7 +56,7 @@ background-image:url(:/test/Resource/test/rm.png);</string>
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>82</y>
+     <y>52</y>
      <width>756</width>
      <height>3</height>
     </rect>
@@ -74,15 +74,69 @@ background-image:url(:/test/Resource/test/Line 1.png);</string>
    <property name="geometry">
     <rect>
      <x>444</x>
-     <y>40</y>
-     <width>28</width>
-     <height>87</height>
+     <y>12</y>
+     <width>29</width>
+     <height>83</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/Component 8.png);</string>
+background-image:url(:/test/Resource/test/AN.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_W">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>12</y>
+     <width>38</width>
+     <height>83</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/AW.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_S">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>12</y>
+     <width>22</width>
+     <height>83</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/AS.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_E">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>10</y>
+     <width>22</width>
+     <height>83</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/AE.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -92,6 +146,9 @@ background-image:url(:/test/Resource/test/Component 8.png);</string>
   <zorder>label_Line_Base</zorder>
   <zorder>label_Arrow_Right</zorder>
   <zorder>label_Flag_N</zorder>
+  <zorder>label_Flag_W</zorder>
+  <zorder>label_Flag_S</zorder>
+  <zorder>label_Flag_E</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

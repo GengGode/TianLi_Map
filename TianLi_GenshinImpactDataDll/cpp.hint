@@ -1,0 +1,2 @@
+#define TIANLIGENSHINIMPACTDATADLL_API __declspec(dllexport)
+#define TIANLIGENSHINIMPACTDATADLL_API __declspec(dllimport)

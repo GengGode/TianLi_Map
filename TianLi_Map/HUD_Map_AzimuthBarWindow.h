@@ -27,7 +27,7 @@ private:
 	bool isShow = true;
 	bool isTopMost = true;
 	
-	double avatarRotationRange = 90;
+	double avatarRotationRange = 45;
 	double avatarRotation = 0;
 
 	std::vector<QTL_FlagObject*> Flags_ObjectList;
@@ -39,10 +39,16 @@ private:
 	void paintEvent(QPaintEvent *);
 
 private:
+	void setFlagS_Range(double value);
 	void setFlagN_Range(double value);
+	void setFlagW_Range(double value);
+	void setFlagE_Range(double value);
 public slots:
 	void setShow(bool IsShow);
 	void setTopMost(bool IsTopMost);
 	void setAvatarRotation(double AvatarRotation);
+	void setFlagS(double RelativeAngle);
 	void setFlagN(double RelativeAngle);
+	void setFlagW(double RelativeAngle);
+	void setFlagE(double RelativeAngle);
 };

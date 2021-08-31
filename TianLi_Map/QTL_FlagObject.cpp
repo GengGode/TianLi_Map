@@ -11,6 +11,7 @@ QTL_FlagObject::QTL_FlagObject(QWidget *parent)
 	
 	opacityEffect = new QGraphicsOpacityEffect;
 	this->setGraphicsEffect(opacityEffect);
+	opacityEffect->setOpacity(0);
 }
 
 QTL_FlagObject::~QTL_FlagObject()
@@ -58,4 +59,18 @@ void QTL_FlagObject::setTransparent(double value)
 	}
 	transparent = value;
 	emit transparentChanged();
+}
+
+void QTL_FlagObject::setShowText(bool isShow)
+{
+	if (isShow)
+	{
+		ui.label_Flag->show();
+		ui.label_Text->show();
+	}
+	else
+	{
+		ui.label_Flag->hide();
+		ui.label_Text->hide();
+	}
 }

@@ -1,6 +1,10 @@
 <RCC>
   <qresource prefix="TianLi_Map"/>
   <qresource prefix="test">
+    <file>Resource/test/AE.png</file>
+    <file>Resource/test/AN.png</file>
+    <file>Resource/test/AS.png</file>
+    <file>Resource/test/AW.png</file>
     <file>Resource/test/图层 25.png</file>
     <file>Resource/test/Component 7.png</file>
     <file>Resource/test/Component 8.png</file>

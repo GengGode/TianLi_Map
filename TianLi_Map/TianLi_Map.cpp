@@ -36,6 +36,7 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 	{
 		WidgetMapAB = new HUD_Map_AzimuthBarWindow();
 		WidgetMapAB->show();
+		WidgetMapAB->move(static_cast<int>((1920 - WidgetMapAB->width()) / 2.0),0);
 		WidgetMapAB->setTopMost(true);
 		WidgetMapAB->update();
 	}

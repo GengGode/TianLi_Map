@@ -26,7 +26,7 @@ public:
 	void setDirection(double dirValue);
 	void setDistance(double disValue);
 	void setTransparent(double value);
-	//void setShowMode();
+	void setShowText(bool isShow);
 
 private slots:
 	void updateText();
