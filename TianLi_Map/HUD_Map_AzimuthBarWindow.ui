@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>915</width>
-    <height>106</height>
+    <height>379</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -142,6 +142,62 @@ background-image:url(:/test/Resource/test/AE.png);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>100</y>
+     <width>481</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="Flag_Image">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>251</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/test/Resource/test/288_47.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Flag_Message">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>230</y>
+      <width>321</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>HYWenHei</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
   <zorder>label_Arrow_Left</zorder>
   <zorder>label_Line_Base</zorder>
   <zorder>label_Arrow_Right</zorder>
@@ -149,6 +205,7 @@ background-image:url(:/test/Resource/test/AE.png);</string>
   <zorder>label_Flag_W</zorder>
   <zorder>label_Flag_S</zorder>
   <zorder>label_Flag_E</zorder>
+  <zorder>widget</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

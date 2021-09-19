@@ -99,9 +99,17 @@ void TianLi_Map::test()
 		isc = true;
 		static double a = 0;
 		bool res = GetRotation(a);
+		char buff[1024] = {'\0'};
+
 		if (res)
 		{
 			WidgetMapAB->setAvatarRotation(a);
+		}
+
+		res=GetStarJson(buff);
+		if (res)
+		{
+			WidgetMapAB->setMessage(QString(buff));
 		}
 		isc = false;
 	}
@@ -111,6 +119,7 @@ void TianLi_Map::test()
 
 void TianLi_Map::TabButtonSwitch()
 {
+	//«–ªª»±…Ÿ∂Ø–ß
 	QPushButton *btn = qobject_cast<QPushButton*>(sender());
 
 #ifdef TabButtonEffect

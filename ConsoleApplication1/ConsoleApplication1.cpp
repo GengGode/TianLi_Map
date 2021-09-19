@@ -1,13 +1,34 @@
 ﻿// ConsoleApplication1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
+#ifndef _PROPERTIES_H
+#define _PROPERTIES_H
+
+#define PROPERTY(t,n)  __declspec( property (put = property__set_##n, get = property__get_##n)) t n; \
+	typedef t property__tmp_type_##n
+#define READONLY_PROPERTY(t,n) __declspec( property (get = property__get_##n) ) t n;\
+	typedef t property__tmp_type_##n
+#define WRITEONLY_PROPERTY(t,n) __declspec( property (put = property__set_##n) ) t n;\
+	typedef t property__tmp_type_##n
+
+#define GET(n) property__tmp_type_##n property__get_##n()
+#define SET(n) void property__set_##n(const property__tmp_type_##n& value)
+
+#endif /* _PROPERTIES_H */ 
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include "core/serialization.h"
+// properties.h
+
+
+
 using namespace std;
+
+
 static const  char * buffer_txt = "buffer.txt";
+
 
 class obj
 {
@@ -15,6 +36,16 @@ class obj
 	double y;
 	double z;
 	long int id;
+public:
+	PROPERTY(int, x);
+	GET(x)
+	{
+		return x;
+	}
+	SET(x)
+	{
+		x = value;
+	}
 };
 
 int(*fun())[10]
@@ -24,14 +55,6 @@ cout << "123" << endl;
 	  return arr;
 }
 
-//typedef int (*a)();
-//typedef a (*b)(int(*fun)(), int(*arr)[5]);
-//typedef b (*c)(int*);
-//
-//int(*(*(*p)(int*))(int(*fun)(), int(*arr)[5])) ();
-//a (*(*p)(int*))(int(*fun)(), int(*arr)[5]);
-//b (*p)(int*);
-//c p;
 
 class objclass : private obj
 {

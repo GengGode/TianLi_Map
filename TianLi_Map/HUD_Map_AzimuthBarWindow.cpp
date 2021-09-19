@@ -1,5 +1,13 @@
 #include "HUD_Map_AzimuthBarWindow.h"
 
+#include <Windows.h>
+#include <QString>
+#include <QMouseEvent>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QPropertyAnimation>
+
 HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	: QWidget(parent)
 {
@@ -7,7 +15,13 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	this->setWindowFlags(Qt::FramelessWindowHint);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-	//ui.label_test->hide();
+	
+	opacityEffect = new QGraphicsOpacityEffect;
+
+	opacityEffect->setOpacity(50);
+	ui.widget->setGraphicsEffect(opacityEffect);
+
+	//ui.label_test->hide();:/test/Resource/test/ObjectList1.png
 
 	QTL_FlagObject* newQTL_FlagObject1 = new QTL_FlagObject(this);
 	newQTL_FlagObject1->setIcon(":/test/Resource/test/Component 9.png");
@@ -115,16 +129,12 @@ void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 
 void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 {
-	int x = static_cast<int>(80 + 378 - ui.label_Flag_N->width() / 2 + ((378 - ui.label_Flag_N->width() / 2) * value));
+	int x = static_cast<int>(80 + 378 - ui.label_Flag_W->width() / 2 + ((378 - ui.label_Flag_W->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
 		ui.label_Flag_N->move(x, ui.label_Flag_N->y());
 
-		Flags_ObjectList[0]->move(x + 30, 12);
-		Flags_ObjectList[0]->setShowText(false);
-		Flags_ObjectList[0]->setDistance(value * 100);
-		Flags_ObjectList[0]->setTransparent(value);
 
 		ui.label_Flag_N->show();
 	}
@@ -181,6 +191,114 @@ void HUD_Map_AzimuthBarWindow::setAvatarRotation(double AvatarRotation)
 	setFlagE(90.0-avatarRotation);
 }
 
+void HUD_Map_AzimuthBarWindow::setMessage(QString message)
+{
+	QJsonDocument jsD = QJsonDocument::fromJson(message.toLocal8Bit().data());
+	QJsonObject js = jsD.object();
+	int num=0;
+	double dis = 0;
+	double arg = 0;
+	const double rad2degScale = 180 / 3.1415926535;
+	//获取神瞳数量
+	if (js.contains("n"))
+	{
+		QJsonValue numValue= js.take("n");
+		if (numValue.isDouble())
+		{
+			//神瞳数量
+			num = numValue.toVariant().toInt();
+			if (num > 0)
+			{
+				//获取神瞳坐标数组
+				if (js.contains("list"))
+				{
+					QJsonValue listValue = js.take("list");
+					if (listValue.isArray())
+					{
+						//神瞳坐标数组
+						QJsonArray listArray = listValue.toArray();
+						for (int i = 0; i < num; i++)
+						{
+							//获取神瞳坐标
+							QJsonValue StarOneValue = listArray[i];
+							if (StarOneValue.isArray())
+							{
+								//神瞳坐标 [double,double]
+								QJsonArray StarValue = StarOneValue.toArray();
+								QJsonValue xValue = StarValue[0];
+								QJsonValue yValue = StarValue[1];
+
+
+								//listArrayValue[]
+								if (xValue.isDouble() && yValue.isDouble())
+								{
+									//神瞳坐标
+									double x = xValue.toDouble();
+									double y = yValue.toDouble();
+									dis = sqrt(x * x + y * y);
+
+									arg = atan2(-y, x)*rad2degScale;
+
+									arg = arg - 90; //从屏幕空间左侧水平线为0度转到竖直向上为0度
+									if (arg < -180.0)arg = arg + 360;
+
+									setFlagObject(i, arg, dis);
+									ui.Flag_Image->show();
+									ui.Flag_Message->setText(QString::number(dis) + " " + QString::number(arg));
+
+								}
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+
+				ui.Flag_Image->hide();
+				ui.Flag_Message->setText("");
+			}
+		}
+	}
+	else
+	{
+		ui.Flag_Image->hide();
+		ui.Flag_Message->setText("");
+	}
+}
+
+void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  double ObjectDistance)
+{
+	//如果id位于列表中
+	if (id < Flags_ObjectList.size())
+	{
+		//如果朝向位于角色视角之内
+		//if (abs(ObjectRotation - avatarRotation) < (avatarRotationRange/2.0))
+		{
+			double arg = arg2arg( ObjectRotation - avatarRotation -45);
+			
+			double value = arg / (avatarRotationRange / 2.0);
+
+			int x = static_cast<int>(80 + 378 - Flags_ObjectList[id]->width() / 2 + ((378 - Flags_ObjectList[id]->width() / 2) * value));
+
+			if (value >= -1 && value <= 1)
+			{
+				Flags_ObjectList[id]->move(x + 30, 12);
+				Flags_ObjectList[id]->setShowText(true);
+				Flags_ObjectList[id]->setDistance(ObjectDistance);
+				Flags_ObjectList[id]->setTransparent(value - 0.2);
+			}
+			else
+			{
+				Flags_ObjectList[id]->setShowText(true);
+				Flags_ObjectList[id]->setTransparent(1.0);
+			}
+
+		}
+
+	}
+}
+
 void HUD_Map_AzimuthBarWindow::setFlagS(double RelativeAngle)
 {
 	double value = RelativeAngle / (avatarRotationRange / 2.0);
@@ -197,7 +315,7 @@ void HUD_Map_AzimuthBarWindow::setFlagW(double RelativeAngle)
 	{
 		RelativeAngle = RelativeAngle + 360;
 	}
-n	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	double value = RelativeAngle / (avatarRotationRange / 2.0);
 	setFlagW_Range(value);
 }
 void HUD_Map_AzimuthBarWindow::setFlagE(double RelativeAngle)
