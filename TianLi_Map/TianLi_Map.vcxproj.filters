@@ -38,18 +38,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <Filter>Resource Files</Filter>
     </AppxManifest>
-    <Image Include="assets/logo_store.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets/logo_620x300.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets/logo_150x150.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets/logo_44x44.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

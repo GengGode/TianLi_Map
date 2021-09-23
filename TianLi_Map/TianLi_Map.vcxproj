@@ -66,8 +66,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\src;C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\src;C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\include;$(opencvinc);$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Debug;$(opencvlib);$(LibraryPath)</LibraryPath>
     <SourcePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -81,7 +81,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>cvAutoTrack.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cvAutoTrack.lib;opencv_world450d.lib;$(Qt_LIBS_);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -137,18 +137,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
     </AppxManifest>
-    <Image Include="assets/logo_store.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
-    </Image>
-    <Image Include="assets/logo_620x300.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
-    </Image>
-    <Image Include="assets/logo_150x150.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
-    </Image>
-    <Image Include="assets/logo_44x44.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">true</ExcludedFromBuild>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="TianLi_Map_ZH.ts" />

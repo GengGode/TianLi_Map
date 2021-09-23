@@ -43,6 +43,11 @@ private:
 #pragma endregion
 
 private:
+	void CreateWidgetMapS();
+	void CreateWidgetMapC();
+	void CreateWidgetMapAB();
+
+private:
 	void connect_UI_Tab();
 	void init_UI_Tab_1();
 	void init_UI_Tab_4();

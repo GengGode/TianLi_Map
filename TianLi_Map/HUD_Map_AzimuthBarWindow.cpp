@@ -275,7 +275,7 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 		//如果朝向位于角色视角之内
 		//if (abs(ObjectRotation - avatarRotation) < (avatarRotationRange/2.0))
 		{
-			double arg = arg2arg( ObjectRotation - avatarRotation -45);
+			double arg = -arg2arg(avatarRotation-ObjectRotation);
 			
 			double value = arg / (avatarRotationRange / 2.0);
 

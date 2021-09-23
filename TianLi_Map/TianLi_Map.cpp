@@ -32,12 +32,50 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 	t->start(1);
 #pragma endregion
 
+	CreateWidgetMapS();
+	CreateWidgetMapC();
+	CreateWidgetMapAB();
+}
+
+void TianLi_Map::CreateWidgetMapS()
+{
+	if (WidgetMapS == nullptr)
+	{
+		WidgetMapS = new HUD_Map_SquareWindow();
+		WidgetMapS->show();
+		//****//
+		WidgetMapS->move(static_cast<int>((1920 - WidgetMapS->width()) / 2.0), 0);
+		WidgetMapS->update();
+	}
+	else
+	{
+		WidgetMapS->show();
+	}
+}
+void TianLi_Map::CreateWidgetMapC()
+{
+	if (WidgetMapC == nullptr)
+	{
+		WidgetMapC = new HUD_Map_CircularWindow();
+		WidgetMapC->show();
+		//****//
+		WidgetMapS->move(static_cast<int>((1920 - WidgetMapC->width()) / 2.0), 0);
+		WidgetMapS->update();
+	}
+	else
+	{
+		WidgetMapC->show();
+	}
+}
+
+void TianLi_Map::CreateWidgetMapAB()
+{
 	if (WidgetMapAB == nullptr)
 	{
 		WidgetMapAB = new HUD_Map_AzimuthBarWindow();
 		WidgetMapAB->show();
-		WidgetMapAB->move(static_cast<int>((1920 - WidgetMapAB->width()) / 2.0),0);
-		WidgetMapAB->setTopMost(true);
+		//****//
+		WidgetMapAB->move(static_cast<int>((1920 - WidgetMapAB->width()) / 2.0), 0);
 		WidgetMapAB->update();
 	}
 	else
@@ -45,7 +83,6 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 		WidgetMapAB->show();
 	}
 }
-
 void TianLi_Map::connect_UI_Tab()
 {
 	pushButton_UI_Tab.append(ui.pushButton_UI_1);

@@ -13,6 +13,12 @@ public:
 
 private:
 	Ui::HUD_Map_CircularWindow ui;
+
+private:
+	QImage RenderImage;
+
+private:
+	void paintEvent(QPaintEvent *);
 };
 
 typedef HUD_Map_CircularWindow HUD_Map_CW;
