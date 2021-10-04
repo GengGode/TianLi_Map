@@ -79,6 +79,22 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>14</y>
+     <width>62</width>
+     <height>62</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="TianLi_Map.qrc">:/ABW_UI/Resource/WidgetABW_UI/FlagObject_BaseBackGround.png</pixmap>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

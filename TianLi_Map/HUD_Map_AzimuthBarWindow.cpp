@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <QString>
+#include <QPainter>
 #include <QMouseEvent>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -95,7 +96,52 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 	{
 
 	}
+	paint = new QPainter;
+	paint->begin(this);
+	paint->setPen(QPen(Qt::white, 1, Qt::SolidLine));//设置画笔形式 
+	paint->setBrush(QBrush(Qt::white, Qt::SolidPattern));//设置画刷形式 
+	paint->drawEllipse(324, 96, 32, 32);
 
+
+	paint->setPen(QPen(QColor(57, 255, 255), 2, Qt::SolidLine));
+	QRectF rectangle(320.0, 92.0, 40.0, 40.0);
+	int startAngle = 90 * 16;
+	int spanAngle = -avatarRotation * 16;
+	paint->drawArc(rectangle, startAngle, spanAngle);
+
+	paint->drawEllipse(338, 90, 4, 4);
+
+	double x, y;
+	paint->setPen(QPen(QColor(57,255,255), 1, Qt::SolidLine));//设置画笔形式 
+	paint->setBrush(QBrush(QColor(57, 255, 255), Qt::SolidPattern));//设置画刷形式 
+	x = -sin(avatarRotation / 180 * 3.14) * 20;
+	y = cos(avatarRotation / 180 * 3.14) * 20;
+	paint->drawEllipse(340 - x-2, 112 - y-2, 4, 4);
+
+
+
+	QPainterPath AvatarArrow;
+
+	double x_a, y_a;
+	double x_b, y_b;
+	x_a = -sin(avatarRotation/180*3.14) * 12;
+	y_a = cos(avatarRotation / 180 * 3.14) * 12;
+	x_b = -sin((avatarRotation + 90) / 180 * 3.14) * 4;
+	y_b = cos((avatarRotation + 90) / 180 * 3.14) * 4;
+
+	AvatarArrow.moveTo(340, 112);
+	AvatarArrow.lineTo(340 + x_b, 112 + y_b);
+	AvatarArrow.lineTo(340 + x_a, 112 + y_a);
+	AvatarArrow.lineTo(340 - x_b, 112 - y_b);
+	AvatarArrow.lineTo(340 - x_a, 112 - y_a);
+	AvatarArrow.lineTo(340 + x_b, 112 + y_b);
+
+	paint->setPen(QColor(0,0,0,128));
+	paint->setBrush(QColor(0, 0, 0, 128));//设置画刷形式 
+	paint->drawPath(AvatarArrow);
+	//paint->setPen(QPen(Qt::transparent, 1, Qt::SolidLine));
+	//paint->setBrush(QBrush(Qt::transparent,Qt::SolidPattern));
+	paint->end();
 	if (isTopMost)
 	{
 		if (HW_TopMods != HWND_TOPMOST)
@@ -123,7 +169,7 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 
 void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 {
-	int x = static_cast<int>(80 + 378 - ui.label_Flag_S->width() / 2 + ((378 - ui.label_Flag_S->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_S->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -138,7 +184,7 @@ void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 
 void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 {
-	int x = static_cast<int>(80 + 378 - ui.label_Flag_W->width() / 2 + ((378 - ui.label_Flag_W->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -154,7 +200,7 @@ void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 }
 void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 {
-	int x = static_cast<int>(80 + 378 - ui.label_Flag_W->width() / 2 + ((378 - ui.label_Flag_W->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -168,7 +214,7 @@ void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 }
 void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 {
-	int x = static_cast<int>(80 + 378 - ui.label_Flag_E->width() / 2 + ((378 - ui.label_Flag_E->width() / 2) * value));
+	int x = static_cast<int>(this->width()/2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_E->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -198,6 +244,7 @@ void HUD_Map_AzimuthBarWindow::setAvatarRotation(double AvatarRotation)
 	setFlagN(-avatarRotation);
 	setFlagW(-90.0-avatarRotation);
 	setFlagE(90.0-avatarRotation);
+	update();
 }
 
 void HUD_Map_AzimuthBarWindow::setMessage(QString message)
@@ -310,12 +357,12 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 
 void HUD_Map_AzimuthBarWindow::setFlagS(double RelativeAngle)
 {
-	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagS_Range(value);
 }
 void HUD_Map_AzimuthBarWindow::setFlagN(double RelativeAngle)
 {
-	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagN_Range(value);
 }
 void HUD_Map_AzimuthBarWindow::setFlagW(double RelativeAngle)
@@ -324,11 +371,11 @@ void HUD_Map_AzimuthBarWindow::setFlagW(double RelativeAngle)
 	{
 		RelativeAngle = RelativeAngle + 360;
 	}
-	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagW_Range(value);
 }
 void HUD_Map_AzimuthBarWindow::setFlagE(double RelativeAngle)
 {
-	double value = RelativeAngle / (avatarRotationRange / 2.0);
+	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagE_Range(value);
 }

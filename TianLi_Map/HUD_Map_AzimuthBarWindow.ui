@@ -6,65 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>915</width>
-    <height>379</height>
+    <width>680</width>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>HUD_Map_AzimuthBarWindow</string>
   </property>
-  <widget class="QLabel" name="label_Arrow_Left">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>69</width>
-     <height>66</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-repeat:no-repeat;
-background-origin:content;
-background-image:url(:/test/Resource/test/lm.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_Arrow_Right">
-   <property name="geometry">
-    <rect>
-     <x>836</x>
-     <y>20</y>
-     <width>69</width>
-     <height>66</height>
-    </rect>
-   </property>
-   <property name="mouseTracking">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-repeat:no-repeat;
-background-origin:content;
-background-image:url(:/test/Resource/test/rm.png);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QLabel" name="label_Line_Base">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>52</y>
-     <width>756</width>
-     <height>3</height>
+     <x>0</x>
+     <y>37</y>
+     <width>680</width>
+     <height>2</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/Line 1.png);</string>
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Base Line.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -73,16 +37,16 @@ background-image:url(:/test/Resource/test/Line 1.png);</string>
   <widget class="QLabel" name="label_Flag_N">
    <property name="geometry">
     <rect>
-     <x>444</x>
-     <y>12</y>
-     <width>29</width>
-     <height>83</height>
+     <x>315</x>
+     <y>30</y>
+     <width>50</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/AN.png);</string>
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag N Mark.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -91,16 +55,16 @@ background-image:url(:/test/Resource/test/AN.png);</string>
   <widget class="QLabel" name="label_Flag_W">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>12</y>
-     <width>38</width>
-     <height>83</height>
+     <x>365</x>
+     <y>30</y>
+     <width>50</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/AW.png);</string>
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag W Mark.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -109,16 +73,16 @@ background-image:url(:/test/Resource/test/AW.png);</string>
   <widget class="QLabel" name="label_Flag_S">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>12</y>
-     <width>22</width>
-     <height>83</height>
+     <x>415</x>
+     <y>30</y>
+     <width>50</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/AS.png);</string>
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag S Mark.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -127,16 +91,16 @@ background-image:url(:/test/Resource/test/AS.png);</string>
   <widget class="QLabel" name="label_Flag_E">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>10</y>
-     <width>22</width>
-     <height>83</height>
+     <x>465</x>
+     <y>30</y>
+     <width>50</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-repeat:no-repeat;
 background-origin:content;
-background-image:url(:/test/Resource/test/AE.png);</string>
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag E Mark.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -145,10 +109,10 @@ background-image:url(:/test/Resource/test/AE.png);</string>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>100</y>
-     <width>481</width>
-     <height>271</height>
+     <x>-170</x>
+     <y>160</y>
+     <width>321</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -157,10 +121,10 @@ background-image:url(:/test/Resource/test/AE.png);</string>
    <widget class="QLabel" name="Flag_Image">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>251</width>
-      <height>211</height>
+      <x>20</x>
+      <y>0</y>
+      <width>261</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -175,8 +139,8 @@ background-image:url(:/test/Resource/test/288_47.jpg);</string>
    <widget class="QLabel" name="Flag_Message">
     <property name="geometry">
      <rect>
-      <x>93</x>
-      <y>230</y>
+      <x>-10</x>
+      <y>220</y>
       <width>321</width>
       <height>20</height>
      </rect>
@@ -198,14 +162,73 @@ background-image:url(:/test/Resource/test/288_47.jpg);</string>
     </property>
    </widget>
   </widget>
-  <zorder>label_Arrow_Left</zorder>
-  <zorder>label_Line_Base</zorder>
-  <zorder>label_Arrow_Right</zorder>
-  <zorder>label_Flag_N</zorder>
-  <zorder>label_Flag_W</zorder>
-  <zorder>label_Flag_S</zorder>
-  <zorder>label_Flag_E</zorder>
-  <zorder>widget</zorder>
+  <widget class="QLabel" name="label_Base_Arrow">
+   <property name="geometry">
+    <rect>
+     <x>332</x>
+     <y>10</y>
+     <width>16</width>
+     <height>8</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Base Arrow Center.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>324</x>
+     <y>196</y>
+     <width>32</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Subtract.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_PointList">
+   <property name="geometry">
+    <rect>
+     <x>-212</x>
+     <y>36</y>
+     <width>1105</width>
+     <height>6</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag Point List Mark.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>190</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

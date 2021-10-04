@@ -34,6 +34,18 @@
     <file>Resource/test/图层 17.png</file>
     <file>Resource/test/图层 N.png</file>
   </qresource>
+  <qresource prefix="ABW_UI">
+    <file>Resource/WidgetABW_UI/FlagObject_BaseBackGround.png</file>
+    <file>Resource/WidgetABW_UI/Flag Point List Mark.png</file>
+    <file>Resource/WidgetABW_UI/Base Line.png</file>
+    <file>Resource/WidgetABW_UI/Flag E Mark.png</file>
+    <file>Resource/WidgetABW_UI/Flag N Mark.png</file>
+    <file>Resource/WidgetABW_UI/Flag S Mark.png</file>
+    <file>Resource/WidgetABW_UI/Flag W Mark.png</file>
+    <file>Resource/WidgetABW_UI/Flag Star Mark.png</file>
+    <file>Resource/WidgetABW_UI/Subtract.png</file>
+    <file>Resource/WidgetABW_UI/Base Arrow Center.png</file>
+  </qresource>
   <qresource prefix="tr">
     <file>TianLi_Map_ZH.qm</file>
   </qresource>

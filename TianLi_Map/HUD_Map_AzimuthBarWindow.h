@@ -29,7 +29,9 @@ private:
 	double avatarRotationRange = 90;
 	double avatarRotation = 0;
 #ifdef _DEBUG
-	QGraphicsDropShadowEffect *test;
+	//QGraphicsDropShadowEffect *test;
+
+	QPainter *paint;
 #endif
 	QGraphicsOpacityEffect *opacityEffect = nullptr;
 
