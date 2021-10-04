@@ -23,6 +23,8 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 
 	//ui.label_test->hide();:/test/Resource/test/ObjectList1.png
 
+
+
 	QTL_FlagObject* newQTL_FlagObject1 = new QTL_FlagObject(this);
 	newQTL_FlagObject1->setIcon(":/test/Resource/test/Component 9.png");
 	QTL_FlagObject* newQTL_FlagObject2 = new QTL_FlagObject(this);
@@ -33,6 +35,13 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	Flags_ObjectList.push_back(newQTL_FlagObject1);
 	Flags_ObjectList.push_back(newQTL_FlagObject2);
 	Flags_ObjectList.push_back(newQTL_FlagObject3);
+#ifdef _DEBUG
+	//test = new QGraphicsDropShadowEffect;
+	//test->setOffset(0, 0);
+	//test->setColor(QColor(0, 0, 0, 255));
+	//test->setBlurRadius(15);
+	//ui.label_Flag_N->setGraphicsEffect(test);
+#endif
 
 	//
 }

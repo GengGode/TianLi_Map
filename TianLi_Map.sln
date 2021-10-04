@@ -13,6 +13,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		DeStatic|x64 = DeStatic|x64
+		DeStatic|x86 = DeStatic|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -20,6 +22,9 @@ Global
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Debug|x64.ActiveCfg = Debug|x64
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Debug|x64.Build.0 = Debug|x64
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Debug|x86.ActiveCfg = Debug|x64
+		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.DeStatic|x64.ActiveCfg = DeStatic|x64
+		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.DeStatic|x64.Build.0 = DeStatic|x64
+		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.DeStatic|x86.ActiveCfg = DeStatic|x64
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Release|x64.ActiveCfg = Release|x64
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Release|x64.Build.0 = Release|x64
 		{A648D4D0-E14F-46D8-9BAC-B38AEB74B4BC}.Release|x64.Deploy.0 = Release|x64
@@ -28,6 +33,10 @@ Global
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Debug|x64.Build.0 = Debug|x64
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Debug|x86.ActiveCfg = Debug|Win32
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Debug|x86.Build.0 = Debug|Win32
+		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.DeStatic|x64.ActiveCfg = DeStatic|x64
+		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.DeStatic|x64.Build.0 = DeStatic|x64
+		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.DeStatic|x86.ActiveCfg = DeStatic|Win32
+		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.DeStatic|x86.Build.0 = DeStatic|Win32
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Release|x64.ActiveCfg = Release|x64
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Release|x64.Build.0 = Release|x64
 		{EE18EBE3-FFB7-409B-88AF-9CA00E1981DD}.Release|x86.ActiveCfg = Release|Win32
@@ -36,6 +45,10 @@ Global
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Debug|x64.Build.0 = Debug|x64
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Debug|x86.ActiveCfg = Debug|Win32
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Debug|x86.Build.0 = Debug|Win32
+		{1E523DE5-7A7C-4232-B380-65710E964615}.DeStatic|x64.ActiveCfg = DeStatic|x64
+		{1E523DE5-7A7C-4232-B380-65710E964615}.DeStatic|x64.Build.0 = DeStatic|x64
+		{1E523DE5-7A7C-4232-B380-65710E964615}.DeStatic|x86.ActiveCfg = DeStatic|Win32
+		{1E523DE5-7A7C-4232-B380-65710E964615}.DeStatic|x86.Build.0 = DeStatic|Win32
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Release|x64.ActiveCfg = Release|x64
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Release|x64.Build.0 = Release|x64
 		{1E523DE5-7A7C-4232-B380-65710E964615}.Release|x86.ActiveCfg = Release|Win32

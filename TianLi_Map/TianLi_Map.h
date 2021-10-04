@@ -1,12 +1,17 @@
 #pragma once
 
+#define NON_PORT
+
 #include <QList>
 #pragma region Test
+#include <QThread>
 #include <QTimer>
 #include <cvAutoTrack.h>
 #pragma endregion
 #include <QCheckBox>
 #include <QPushButton>
+#include <QSerialPort>
+#include <QSerialPortInfo>
 #include <QGraphicsDropShadowEffect>
 #include <QtWidgets/QWidget>
 #include "ui_TianLi_Map.h"
@@ -31,6 +36,11 @@ private:
 
 	QGraphicsDropShadowEffect *MainShadow = nullptr;
 
+
+#pragma region Test
+	QSerialPort *mainSerial=nullptr;
+#pragma endregion
+
 #ifdef TabButtonEffect
 	QGraphicsDropShadowEffect *TabShadow = nullptr;
 #endif
@@ -50,13 +60,19 @@ private:
 private:
 	void connect_UI_Tab();
 	void init_UI_Tab_1();
+	void init_UI_Tab_3();
 	void init_UI_Tab_4();
 
 private slots:
 	void Exit();
 
 #pragma region Test
-	void test();
+	void test1();
+	void test2();
+	void test3();
+	void test4();
+	void test5();
+	void test6(QString str);
 #pragma endregion
 
 private:

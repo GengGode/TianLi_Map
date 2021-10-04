@@ -28,7 +28,9 @@ private:
 	
 	double avatarRotationRange = 90;
 	double avatarRotation = 0;
-
+#ifdef _DEBUG
+	QGraphicsDropShadowEffect *test;
+#endif
 	QGraphicsOpacityEffect *opacityEffect = nullptr;
 
 	std::vector<QTL_FlagObject*> Flags_ObjectList;
@@ -70,3 +72,5 @@ private:
 		return res;
 	}
 };
+
+
