@@ -4,7 +4,7 @@
 #include <QWidget>
 #include "ui_HUD_Map_AzimuthBarWindow.h"
 #include "QTL_FlagObject.h"
-
+#include "QTLC_AvatarArrowObject.h"
 #include <QGraphicsOpacityEffect>
 
 class HUD_Map_AzimuthBarWindow : public QWidget
@@ -35,6 +35,7 @@ private:
 #endif
 	QGraphicsOpacityEffect *opacityEffect = nullptr;
 
+	QTLC_AvatarArrowObject *Arrow_AvatarObject;
 	std::vector<QTL_FlagObject*> Flags_ObjectList;
 	std::vector<std::vector<double>> p;
 private:
@@ -49,6 +50,8 @@ private:
 	void setFlagW_Range(double value);
 	void setFlagE_Range(double value);
 public slots:
+	void ShowMe();
+	void HideMe();
 	void setShow(bool IsShow);
 	void setTopMost(bool IsTopMost);
 	void setAvatarRotation(double AvatarRotation);

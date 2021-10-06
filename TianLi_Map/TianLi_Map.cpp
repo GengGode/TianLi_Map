@@ -163,6 +163,15 @@ void TianLi_Map::test1()
 		if (res)
 		{
 			WidgetMapAB->setAvatarRotation(a);
+			WidgetMapAB->ShowMe();
+		}
+		else
+		{
+			int ec = GetLastErr();
+			if (!ui.checkBox->isChecked())
+			{
+				WidgetMapAB->HideMe();
+			}
 		}
 
 		res=GetStarJson(buff);

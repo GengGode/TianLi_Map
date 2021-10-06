@@ -55,6 +55,9 @@
     <ClCompile Include="QTL_FlagObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QTLC_AvatarArrowObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtTranslation Include="TianLi_Map_ZH.ts">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="QTL_FlagObject.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QTLC_AvatarArrowObject.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -3,9 +3,9 @@
 #include <Windows.h>
 #include <QString>
 #include <QPainter>
-#include <QMouseEvent>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QMouseEvent>
 #include <QJsonDocument>
 #include <QPropertyAnimation>
 
@@ -24,18 +24,19 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 
 	//ui.label_test->hide();:/test/Resource/test/ObjectList1.png
 
-
-
 	QTL_FlagObject* newQTL_FlagObject1 = new QTL_FlagObject(this);
-	newQTL_FlagObject1->setIcon(":/test/Resource/test/Component 9.png");
+	newQTL_FlagObject1->setIcon(":/test/Resource/test/ObjectList2.png");
 	QTL_FlagObject* newQTL_FlagObject2 = new QTL_FlagObject(this);
-	newQTL_FlagObject2->setIcon(":/test/Resource/test/Component 9.png");
+	newQTL_FlagObject2->setIcon(":/test/Resource/test/ObjectList2.png");
 	QTL_FlagObject* newQTL_FlagObject3 = new QTL_FlagObject(this);
-	newQTL_FlagObject3->setIcon(":/test/Resource/test/Component 9.png");
+	newQTL_FlagObject3->setIcon(":/test/Resource/test/ObjectList2.png");
 
 	Flags_ObjectList.push_back(newQTL_FlagObject1);
 	Flags_ObjectList.push_back(newQTL_FlagObject2);
 	Flags_ObjectList.push_back(newQTL_FlagObject3);
+
+	Arrow_AvatarObject = new QTLC_AvatarArrowObject(nullptr);
+	Arrow_AvatarObject->show();
 #ifdef _DEBUG
 	//test = new QGraphicsDropShadowEffect;
 	//test->setOffset(0, 0);
@@ -75,6 +76,9 @@ void HUD_Map_AzimuthBarWindow::mouseMoveEvent(QMouseEvent *event)
 	{
 		m_Move = event->globalPos();
 		this->move(this->pos() + m_Move - m_Press);
+
+		Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
+
 		m_Press = m_Move;
 	}
 	event->ignore();
@@ -96,52 +100,7 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 	{
 
 	}
-	paint = new QPainter;
-	paint->begin(this);
-	paint->setPen(QPen(Qt::white, 1, Qt::SolidLine));//设置画笔形式 
-	paint->setBrush(QBrush(Qt::white, Qt::SolidPattern));//设置画刷形式 
-	paint->drawEllipse(324, 96, 32, 32);
 
-
-	paint->setPen(QPen(QColor(57, 255, 255), 2, Qt::SolidLine));
-	QRectF rectangle(320.0, 92.0, 40.0, 40.0);
-	int startAngle = 90 * 16;
-	int spanAngle = -avatarRotation * 16;
-	paint->drawArc(rectangle, startAngle, spanAngle);
-
-	paint->drawEllipse(338, 90, 4, 4);
-
-	double x, y;
-	paint->setPen(QPen(QColor(57,255,255), 1, Qt::SolidLine));//设置画笔形式 
-	paint->setBrush(QBrush(QColor(57, 255, 255), Qt::SolidPattern));//设置画刷形式 
-	x = -sin(avatarRotation / 180 * 3.14) * 20;
-	y = cos(avatarRotation / 180 * 3.14) * 20;
-	paint->drawEllipse(340 - x-2, 112 - y-2, 4, 4);
-
-
-
-	QPainterPath AvatarArrow;
-
-	double x_a, y_a;
-	double x_b, y_b;
-	x_a = -sin(avatarRotation/180*3.14) * 12;
-	y_a = cos(avatarRotation / 180 * 3.14) * 12;
-	x_b = -sin((avatarRotation + 90) / 180 * 3.14) * 4;
-	y_b = cos((avatarRotation + 90) / 180 * 3.14) * 4;
-
-	AvatarArrow.moveTo(340, 112);
-	AvatarArrow.lineTo(340 + x_b, 112 + y_b);
-	AvatarArrow.lineTo(340 + x_a, 112 + y_a);
-	AvatarArrow.lineTo(340 - x_b, 112 - y_b);
-	AvatarArrow.lineTo(340 - x_a, 112 - y_a);
-	AvatarArrow.lineTo(340 + x_b, 112 + y_b);
-
-	paint->setPen(QColor(0,0,0,128));
-	paint->setBrush(QColor(0, 0, 0, 128));//设置画刷形式 
-	paint->drawPath(AvatarArrow);
-	//paint->setPen(QPen(Qt::transparent, 1, Qt::SolidLine));
-	//paint->setBrush(QBrush(Qt::transparent,Qt::SolidPattern));
-	paint->end();
 	if (isTopMost)
 	{
 		if (HW_TopMods != HWND_TOPMOST)
@@ -163,7 +122,9 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 
 	if (isChanged)
 	{
+		Arrow_AvatarObject->move(this->x() + 316, this->y() + 96);
 		SetWindowPos((HWND)this->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+		SetWindowPos((HWND)Arrow_AvatarObject->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 	}
 }
 
@@ -226,6 +187,17 @@ void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 		ui.label_Flag_E->hide();
 	}
 }
+void HUD_Map_AzimuthBarWindow::ShowMe()
+{
+	this->show();
+	Arrow_AvatarObject->show();
+}
+
+void HUD_Map_AzimuthBarWindow::HideMe()
+{
+	this->hide();
+	Arrow_AvatarObject->hide();
+}
 
 void HUD_Map_AzimuthBarWindow::setShow(bool IsShow)
 {
@@ -244,7 +216,8 @@ void HUD_Map_AzimuthBarWindow::setAvatarRotation(double AvatarRotation)
 	setFlagN(-avatarRotation);
 	setFlagW(-90.0-avatarRotation);
 	setFlagE(90.0-avatarRotation);
-	update();
+	Arrow_AvatarObject->setAvatarRotation(avatarRotation);
+	//update();
 }
 
 void HUD_Map_AzimuthBarWindow::setMessage(QString message)
@@ -299,8 +272,10 @@ void HUD_Map_AzimuthBarWindow::setMessage(QString message)
 									if (arg < -180.0)arg = arg + 360;
 
 									setFlagObject(i, arg, dis);
-									ui.Flag_Image->show();
-									ui.Flag_Message->setText(QString::number(dis) + " " + QString::number(arg));
+									//ui.Flag_Image->show();
+									ui.Flag_Image->hide();
+									//ui.Flag_Message->setText(QString::number(dis) + " " + QString::number(arg));
+									ui.Flag_Message->setText(" ");
 
 								}
 							}
@@ -331,15 +306,17 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 		//如果朝向位于角色视角之内
 		//if (abs(ObjectRotation - avatarRotation) < (avatarRotationRange/2.0))
 		{
-			double arg = -arg2arg(avatarRotation-ObjectRotation);
+			double arg = arg2arg(-avatarRotation-ObjectRotation);
 			
 			double value = arg / (avatarRotationRange / 2.0);
 
-			int x = static_cast<int>(80 + 378 - Flags_ObjectList[id]->width() / 2 + ((378 - Flags_ObjectList[id]->width() / 2) * value));
+			Arrow_AvatarObject->setFlagObjectRotation(-arg);
+
+			int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - Flags_ObjectList[id]->width() / 2) * value));
 
 			if (value >= -1 && value <= 1)
 			{
-				Flags_ObjectList[id]->move(x + 30, 12);
+				Flags_ObjectList[id]->move(x, 5);
 				Flags_ObjectList[id]->setShowText(true);
 				Flags_ObjectList[id]->setDistance(ObjectDistance);
 				Flags_ObjectList[id]->setTransparent(value - 0.2);

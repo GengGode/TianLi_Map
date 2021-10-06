@@ -4,7 +4,7 @@ QTL_FlagObject::QTL_FlagObject(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	this->setGeometry(QRect(this->x(), 38 , 64, 89));
+	this->setGeometry(QRect(this->x(), 25 , 64, 76));
 	
 	connect(this, &QTL_FlagObject::distanceChanged, this, &QTL_FlagObject::updateText);
 	connect(this, &QTL_FlagObject::transparentChanged, this, &QTL_FlagObject::updateTransparent);
@@ -21,6 +21,7 @@ QTL_FlagObject::~QTL_FlagObject()
 void QTL_FlagObject::setIcon(QString urlIcon)
 {
 	ui.label_Icon->setPixmap(urlIcon);
+	ui.label_Icon->setScaledContents(true);
 }
 
 void QTL_FlagObject::setDirection(double dirValue)
@@ -43,7 +44,8 @@ void QTL_FlagObject::updateText()
 void QTL_FlagObject::updateTransparent()
 {
 	
-	opacityEffect->setOpacity(1 - abs(transparent));
+	//opacityEffect->setOpacity(1 - abs(transparent));
+	opacityEffect->setOpacity(1);
 
 }
 
@@ -65,12 +67,12 @@ void QTL_FlagObject::setShowText(bool isShow)
 {
 	if (isShow)
 	{
-		ui.label_Flag->show();
+		//ui.label_Flag->show();
 		ui.label_Text->show();
 	}
 	else
 	{
-		ui.label_Flag->hide();
+		//ui.label_Flag->hide();
 		ui.label_Text->hide();
 	}
 }

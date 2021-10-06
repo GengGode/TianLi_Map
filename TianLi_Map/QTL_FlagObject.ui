@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>113</width>
-    <height>139</height>
+    <width>94</width>
+    <height>76</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -23,7 +23,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>77</y>
+     <y>64</y>
      <width>64</width>
      <height>12</height>
     </rect>
@@ -44,32 +44,13 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_Flag">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>64</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="TianLi_Map.qrc">:/test/Resource/test/图层 25.png</pixmap>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_Icon">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>13</y>
-     <width>64</width>
-     <height>64</height>
+     <x>20</x>
+     <y>20</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
@@ -79,11 +60,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_IconBackground">
    <property name="geometry">
     <rect>
      <x>1</x>
-     <y>14</y>
+     <y>1</y>
      <width>62</width>
      <height>62</height>
     </rect>
@@ -95,6 +76,9 @@
     <pixmap resource="TianLi_Map.qrc">:/ABW_UI/Resource/WidgetABW_UI/FlagObject_BaseBackGround.png</pixmap>
    </property>
   </widget>
+  <zorder>label_IconBackground</zorder>
+  <zorder>label_Text</zorder>
+  <zorder>label_Icon</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

@@ -175,6 +175,7 @@
     <ClCompile Include="HUD_Map_AzimuthBarWindow.cpp" />
     <ClCompile Include="HUD_Map_CircularWindow.cpp" />
     <ClCompile Include="HUD_Map_SquareWindow.cpp" />
+    <ClCompile Include="QTLC_AvatarArrowObject.cpp" />
     <ClCompile Include="QTL_FlagObject.cpp" />
     <ClCompile Include="TianLi_Map.cpp" />
     <ClCompile Include="main.cpp" />
@@ -197,6 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QTL_FlagObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QTLC_AvatarArrowObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
