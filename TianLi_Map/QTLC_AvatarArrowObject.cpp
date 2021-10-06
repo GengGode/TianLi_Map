@@ -9,6 +9,8 @@ QTLC_AvatarArrowObject::QTLC_AvatarArrowObject(QWidget *parent)
 	this->setWindowFlags(Qt::FramelessWindowHint);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+	this->setWindowFlags(Qt::FramelessWindowHint);
+
 
 	QSurfaceFormat format;
 	format.setSamples(16);
