@@ -85,7 +85,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <IncludePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\src;C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\include;$(opencvinc);$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Debug;$(opencvlib);$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\GengG\source\repos\cvAutoTrack\x64\Release;$(opencvlib);$(LibraryPath)</LibraryPath>
     <SourcePath>C:\Users\GengG\source\repos\cvAutoTrack\cvAutoTrack\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DeStatic|x64'">

@@ -16,6 +16,7 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	this->setWindowFlags(Qt::FramelessWindowHint);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+	this->setWindowFlags(Qt::FramelessWindowHint);
 	
 	opacityEffect = new QGraphicsOpacityEffect;
 
@@ -35,8 +36,10 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	Flags_ObjectList.push_back(newQTL_FlagObject2);
 	Flags_ObjectList.push_back(newQTL_FlagObject3);
 
-	Arrow_AvatarObject = new QTLC_AvatarArrowObject(nullptr);
-	Arrow_AvatarObject->show();
+	Arrow_AvatarObject = new QTLC_AvatarArrowObject(this);
+	Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
+
+	//Arrow_AvatarObject->show();
 #ifdef _DEBUG
 	//test = new QGraphicsDropShadowEffect;
 	//test->setOffset(0, 0);
@@ -77,7 +80,7 @@ void HUD_Map_AzimuthBarWindow::mouseMoveEvent(QMouseEvent *event)
 		m_Move = event->globalPos();
 		this->move(this->pos() + m_Move - m_Press);
 
-		Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
+		//Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
 
 		m_Press = m_Move;
 	}
@@ -122,7 +125,7 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 
 	if (isChanged)
 	{
-		Arrow_AvatarObject->move(this->x() + 316, this->y() + 96);
+		//Arrow_AvatarObject->move(this->x() + 316, this->y() + 96);
 		SetWindowPos((HWND)this->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 		SetWindowPos((HWND)Arrow_AvatarObject->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 	}
