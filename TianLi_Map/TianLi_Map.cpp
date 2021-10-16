@@ -1,5 +1,7 @@
 #include "TianLi_Map.h"
 
+#include <QTimer>
+
 TianLi_Map::TianLi_Map(QWidget *parent)
     : QWidget(parent)
 {
@@ -26,9 +28,15 @@ TianLi_Map::TianLi_Map(QWidget *parent)
 	}
 	connect(ui.pushButton_2, &QPushButton::clicked, this, &TianLi_Map::test2);
 	connect(ui.pushButton_32, &QPushButton::clicked, this, &TianLi_Map::test4);
-	connect(ui.pushButton_3, &QPushButton::clicked, this, &TianLi_Map::test5);
+	connect(ui.pushButton_3, &QPushButton::clicked, this, &TianLi_Map::test7);
 	//mainSerial=;
-#pragma endregion
+
+	ComSendTimer = new QTimer(this);
+	connect(ComSendTimer, &QTimer::timeout, this, &TianLi_Map::test5);
+
+	#pragma endregion
+
+
 
 #ifdef TabButtonEffect
 	TabShadow = new QGraphicsDropShadowEffect;
@@ -225,19 +233,51 @@ void TianLi_Map::test4()
 }
 void TianLi_Map::test5()
 {
-	test6("M 1 0 10 0");
-	test6("M 0 0 0 0");
-	test6("K 0 0 4 0");
-	test6("K 0 0 0 0");
+	static int id = 0;
+	static QVector<QString> MK_CMDs = { "M 0 0 0 0"
+									 ,"M 1 0 0 0"
+									 ,"M 0 0 0 0"
+									 ,"M 0 0 0 0"
+									 ,"M 0 30 30 0"
+									 ,"K 0 0 0 0" };
+
+	for (int i = 0; i < MK_CMDs.size(); i++)
+	{
+		if (id == i)
+		{
+			test6(MK_CMDs[i]);
+			id++;
+			if (id >= MK_CMDs.size())
+			{
+				id = 0;
+				ComSendTimer->stop();
+			}
+			else
+			{
+				ComSendTimer->start(600);
+			}
+			break;
+		}
+	}
+	//test6("M 1 0 10 0");
+	//test6("M 0 0 0 0");
+	//test6("K 0 0 4 0");
+	//test6("K 0 0 0 0");
 }
 void TianLi_Map::test6(QString str)
 {
 	mainSerial->write(str.toLatin1());
-	QThread::msleep(3000);
+	//QThread::msleep(3000);
 	QString str2 = ui.textEdit->toPlainText();
 	str2 += tr("OK");
 	ui.textEdit->clear();
 	ui.textEdit->append(str2);
+}
+
+void TianLi_Map::test7()
+{
+	//ComSendTimer->setInterval(300);
+	ComSendTimer->start(300);
 }
 #pragma endregion
 

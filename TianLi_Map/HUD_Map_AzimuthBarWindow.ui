@@ -111,8 +111,8 @@ background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag E Mark.png);</string>
     <rect>
      <x>10</x>
      <y>110</y>
-     <width>321</width>
-     <height>251</height>
+     <width>311</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -139,8 +139,8 @@ background-image:url(:/test/Resource/test/288_47.jpg);</string>
    <widget class="QLabel" name="Flag_Message">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>220</y>
+      <x>0</x>
+      <y>10</y>
       <width>321</width>
       <height>20</height>
      </rect>
@@ -183,8 +183,8 @@ background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Base Arrow Center.png);</str
   <widget class="QLabel" name="label_Flag_PointList">
    <property name="geometry">
     <rect>
-     <x>-212</x>
-     <y>36</y>
+     <x>-210</x>
+     <y>150</y>
      <width>1105</width>
      <height>6</height>
     </rect>
@@ -198,17 +198,58 @@ background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag Point List Mark.png);</
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_Flag_Star_A">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>190</y>
-     <width>81</width>
-     <height>81</height>
+     <x>111</x>
+     <y>35</y>
+     <width>6</width>
+     <height>6</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag Star Mark.png);</string>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_Star_B">
+   <property name="geometry">
+    <rect>
+     <x>337</x>
+     <y>35</y>
+     <width>6</width>
+     <height>6</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag Star Mark.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Flag_Star_C">
+   <property name="geometry">
+    <rect>
+     <x>564</x>
+     <y>35</y>
+     <width>6</width>
+     <height>6</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat:no-repeat;
+background-origin:content;
+background-image:url(:/ABW_UI/Resource/WidgetABW_UI/Flag Star Mark.png);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

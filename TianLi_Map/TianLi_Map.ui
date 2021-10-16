@@ -1507,7 +1507,7 @@ color:rgb(255, 255, 255);
       <string>PushButton</string>
      </property>
      <property name="shortcut">
-      <string>P</string>
+      <string>Alt+P</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_32">

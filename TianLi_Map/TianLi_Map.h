@@ -38,6 +38,7 @@ private:
 
 
 #pragma region Test
+	QTimer *ComSendTimer;
 	QSerialPort *mainSerial=nullptr;
 #pragma endregion
 
@@ -73,6 +74,7 @@ private slots:
 	void test4();
 	void test5();
 	void test6(QString str);
+	void test7();
 #pragma endregion
 
 private:

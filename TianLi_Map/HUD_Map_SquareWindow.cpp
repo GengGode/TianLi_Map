@@ -4,7 +4,7 @@ HUD_Map_SquareWindow::HUD_Map_SquareWindow(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	this->setWindowFlags(Qt::FramelessWindowHint);
+	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup | Qt::Tool);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }

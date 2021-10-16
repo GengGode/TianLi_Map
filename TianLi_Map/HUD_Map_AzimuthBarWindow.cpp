@@ -13,10 +13,10 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	this->setWindowFlags(Qt::FramelessWindowHint);
+	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup | Qt::Tool);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-	
+
 	opacityEffect = new QGraphicsOpacityEffect;
 
 	opacityEffect->setOpacity(50);
@@ -35,8 +35,11 @@ HUD_Map_AzimuthBarWindow::HUD_Map_AzimuthBarWindow(QWidget *parent)
 	Flags_ObjectList.push_back(newQTL_FlagObject2);
 	Flags_ObjectList.push_back(newQTL_FlagObject3);
 
+	//指南针窗口控件
 	Arrow_AvatarObject = new QTLC_AvatarArrowObject(nullptr);
 	Arrow_AvatarObject->show();
+	//Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
+
 #ifdef _DEBUG
 	//test = new QGraphicsDropShadowEffect;
 	//test->setOffset(0, 0);
@@ -77,6 +80,7 @@ void HUD_Map_AzimuthBarWindow::mouseMoveEvent(QMouseEvent *event)
 		m_Move = event->globalPos();
 		this->move(this->pos() + m_Move - m_Press);
 
+		// 指南针窗口随动
 		Arrow_AvatarObject->move(this->x() + 316, this->y() + 90);
 
 		m_Press = m_Move;
@@ -101,6 +105,8 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 
 	}
 
+
+
 	if (isTopMost)
 	{
 		if (HW_TopMods != HWND_TOPMOST)
@@ -122,12 +128,14 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 
 	if (isChanged)
 	{
+		// 窗口随动 + 窗口刷新置顶状态
 		Arrow_AvatarObject->move(this->x() + 316, this->y() + 96);
 		SetWindowPos((HWND)this->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 		SetWindowPos((HWND)Arrow_AvatarObject->winId(), HW_TopMods, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 	}
 }
 
+// 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 {
 	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_S->width() / 2) * value));
@@ -143,6 +151,7 @@ void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 	}
 }
 
+// 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 {
 	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
@@ -159,6 +168,7 @@ void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 		ui.label_Flag_N->hide();
 	}
 }
+// 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 {
 	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
@@ -173,6 +183,8 @@ void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 		ui.label_Flag_W->hide();
 	}
 }
+
+// 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 {
 	int x = static_cast<int>(this->width()/2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_E->width() / 2) * value));
@@ -187,12 +199,32 @@ void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 		ui.label_Flag_E->hide();
 	}
 }
+
+// 角度标点移动
+void HUD_Map_AzimuthBarWindow::setFlagStar_Range(double value)
+{
+	QLabel* thisLabel = ui.label_Flag_Star_A;
+	int x = static_cast<int>(this->width() / 2 - thisLabel->width() / 2 + ((this->width() / 2 - thisLabel->width() / 2) * value));
+
+	if (value >= -1 && value <= 1)
+	{
+		thisLabel->move(x, thisLabel->y());
+		thisLabel->show();
+	}
+	else
+	{
+		thisLabel->hide();
+	}
+}
+
+// 联动显示
 void HUD_Map_AzimuthBarWindow::ShowMe()
 {
 	this->show();
 	Arrow_AvatarObject->show();
 }
 
+//联动隐藏
 void HUD_Map_AzimuthBarWindow::HideMe()
 {
 	this->hide();
@@ -209,17 +241,24 @@ void HUD_Map_AzimuthBarWindow::setTopMost(bool IsTopMost)
 	isTopMost = IsTopMost;
 }
 
+//角度数据分发
 void HUD_Map_AzimuthBarWindow::setAvatarRotation(double AvatarRotation)
 {
 	avatarRotation = -AvatarRotation;
+
 	setFlagS(180.0-avatarRotation);
 	setFlagN(-avatarRotation);
 	setFlagW(-90.0-avatarRotation);
-	setFlagE(90.0-avatarRotation);
+	setFlagE(90.0 - avatarRotation);
+
+	setFlagStar(-avatarRotation);
+
+	//角度传递至指南针
 	Arrow_AvatarObject->setAvatarRotation(avatarRotation);
 	//update();
 }
 
+//从json数据中读取神瞳坐标等信息
 void HUD_Map_AzimuthBarWindow::setMessage(QString message)
 {
 	QJsonDocument jsD = QJsonDocument::fromJson(message.toLocal8Bit().data());
@@ -229,6 +268,7 @@ void HUD_Map_AzimuthBarWindow::setMessage(QString message)
 	double arg = 0;
 	const double rad2degScale = 180 / 3.1415926535;
 	//获取神瞳数量
+
 	if (js.contains("n"))
 	{
 		QJsonValue numValue= js.take("n");
@@ -324,10 +364,14 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 			else
 			{
 				Flags_ObjectList[id]->setShowText(true);
-				Flags_ObjectList[id]->setTransparent(1.0);
+				Flags_ObjectList[id]->setTransparent(0.5);
 			}
 
 		}
+
+	}
+	else
+	{
 
 	}
 }
@@ -355,4 +399,10 @@ void HUD_Map_AzimuthBarWindow::setFlagE(double RelativeAngle)
 {
 	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagE_Range(value);
+}
+
+void HUD_Map_AzimuthBarWindow::setFlagStar(double RelativeAngle)
+{
+	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
+	setFlagStar_Range(value);
 }

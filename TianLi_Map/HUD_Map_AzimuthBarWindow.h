@@ -26,12 +26,10 @@ private:
 	bool isShow = true;
 	bool isTopMost = true;
 	
-	double avatarRotationRange = 90;
+	double avatarRotationRange = 97.14;
 	double avatarRotation = 0;
 #ifdef _DEBUG
 	//QGraphicsDropShadowEffect *test;
-
-	QPainter *paint;
 #endif
 	QGraphicsOpacityEffect *opacityEffect = nullptr;
 
@@ -49,6 +47,8 @@ private:
 	void setFlagN_Range(double value);
 	void setFlagW_Range(double value);
 	void setFlagE_Range(double value);
+	void setFlagStar_Range(double value);
+
 public slots:
 	void ShowMe();
 	void HideMe();
@@ -63,6 +63,7 @@ public slots:
 	void setFlagN(double RelativeAngle);
 	void setFlagW(double RelativeAngle);
 	void setFlagE(double RelativeAngle);
+	void setFlagStar(double RelativeAngle);
 
 private:
 	double arg2arg(double arg) 

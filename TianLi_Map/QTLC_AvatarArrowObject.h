@@ -12,7 +12,7 @@ public:
 	~QTLC_AvatarArrowObject();
 
 private:
-	QPainter *paint;
+	//QPainter *paint;
 private:
 	void initializeGL();
 	void paintEvent(QPaintEvent *);

@@ -6,10 +6,9 @@
 QTLC_AvatarArrowObject::QTLC_AvatarArrowObject(QWidget *parent)
 	: QOpenGLWidget(parent)
 {
-	this->setWindowFlags(Qt::FramelessWindowHint);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-	this->setWindowFlags(Qt::FramelessWindowHint);
+	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup | Qt::Tool);
 
 
 	QSurfaceFormat format;
@@ -39,62 +38,60 @@ void QTLC_AvatarArrowObject::paintEvent(QPaintEvent *)
 	const double y_c = 24;
 	double a = avatarRotation / 180 * 3.14;
 
-	paint = new QPainter;
+	QPainter paint(this);
 
 
-
-	paint->begin(this);
-	paint->setRenderHint(QPainter::HighQualityAntialiasing);
+	paint.setRenderHint(QPainter::HighQualityAntialiasing);
 	//
-	//paint->setCompositionMode(QPainter::CompositionMode_DestinationIn);
-	paint->setCompositionMode(QPainter::CompositionMode_DestinationIn);
-	//paint->fillRect(this->rect(), Qt::NoBrush);
-	paint->fillRect(this->rect(), Qt::transparent);
-	paint->setCompositionMode(QPainter::CompositionMode_SourceOver);
+	//paint.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+	paint.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+	//paint.fillRect(this.rect(), Qt::NoBrush);
+	paint.fillRect(this->rect(), Qt::transparent);
+	paint.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
 	// 基础大圆
-	paint->setPen(Qt::NoPen);//设置画笔形式 
-	paint->setBrush(QBrush(Qt::white, Qt::SolidPattern));//设置画刷形式 
-	paint->drawEllipse(x_c - MainR, y_c - MainR, MainD, MainD);
+	paint.setPen(Qt::NoPen);//设置画笔形式 
+	paint.setBrush(QBrush(Qt::white, Qt::SolidPattern));//设置画刷形式 
+	paint.drawEllipse(x_c - MainR, y_c - MainR, MainD, MainD);
 
 	if (ObjectList.size() > 0)
 	{
 		for (int i = 0; i < ObjectList.size(); i++)
 		{
 			// 目标弧线
-			paint->setPen(QPen(QColor(230, 185, 69), 2, Qt::SolidLine));
+			paint.setPen(QPen(QColor(230, 185, 69), 2, Qt::SolidLine));
 			int startAngle = 90 * 16;
 			int spanAngle = ObjectList[i] * 16;
 			QRectF R_C_arc(4.0, 4.0, 40.0, 40.0);
-			paint->drawArc(R_C_arc, startAngle, spanAngle);
+			paint.drawArc(R_C_arc, startAngle, spanAngle);
 
 			// 目标小圆
 			double x, y;
-			paint->setPen(Qt::NoPen);//设置画笔形式 
-			paint->setBrush(QColor(230, 185, 69));//设置画刷形式 
+			paint.setPen(Qt::NoPen);//设置画笔形式 
+			paint.setBrush(QColor(230, 185, 69));//设置画刷形式 
 			x = sin(deg2rad(ObjectList[i])) * 20;
 			y = cos(deg2rad(ObjectList[i])) * 20;
 			QRectF R_C_Avatar(x_c - x - minR, y_c - y - minR, minD, minD);
-			paint->drawEllipse(R_C_Avatar);
+			paint.drawEllipse(R_C_Avatar);
 		}
 
 	}
 
 
 	// 基础自身朝向小圆
-	paint->setPen(Qt::NoPen);//设置画笔形式 
-	paint->setBrush(Qt::white);//设置画刷形式 
+	paint.setPen(Qt::NoPen);//设置画笔形式 
+	paint.setBrush(Qt::white);//设置画刷形式 
 	QRectF R_C_baseN(x_c - minR, 2, minD, minD);
-	paint->drawEllipse(R_C_baseN);
+	paint.drawEllipse(R_C_baseN);
 
 	// 北方小圆
 	double x, y;
-	paint->setPen(Qt::NoPen);//设置画笔形式 
-	paint->setBrush(QColor(57, 255, 255));//设置画刷形式 
+	paint.setPen(Qt::NoPen);//设置画笔形式 
+	paint.setBrush(QColor(57, 255, 255));//设置画刷形式 
 	x = sin(a) * 20;
 	y = cos(a) * 20;
 	QRectF R_C_Avatar(x_c - x - minR, y_c - y - minR, minD, minD);
-	paint->drawEllipse(R_C_Avatar);
+	paint.drawEllipse(R_C_Avatar);
 
 	//QPainterPath AvatarArrow;
 
@@ -112,13 +109,12 @@ void QTLC_AvatarArrowObject::paintEvent(QPaintEvent *)
 	AvatarArrowPoints.append(QPointF(x_c - x_b, y_c - y_b));
 	AvatarArrowPoints.append(QPointF(x_c - x_a, y_c - y_a));
 
-	paint->setPen(Qt::NoPen);
-	paint->setBrush(Qt::transparent);
-	paint->setCompositionMode(QPainter::CompositionMode_DestinationIn);
-	paint->drawPolygon(AvatarArrowPoints);
-	paint->setCompositionMode(QPainter::CompositionMode_SourceOver);
+	paint.setPen(Qt::NoPen);
+	paint.setBrush(Qt::transparent);
+	paint.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+	paint.drawPolygon(AvatarArrowPoints);
+	paint.setCompositionMode(QPainter::CompositionMode_SourceOver);
 
-	paint->end();
 }
 
 void QTLC_AvatarArrowObject::setAvatarRotation(double AvatarRotation)
