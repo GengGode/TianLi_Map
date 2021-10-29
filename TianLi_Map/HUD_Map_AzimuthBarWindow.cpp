@@ -138,7 +138,7 @@ void HUD_Map_AzimuthBarWindow::paintEvent(QPaintEvent *)
 // 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 {
-	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_S->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((630 / 2 - ui.label_Flag_S->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -154,7 +154,7 @@ void HUD_Map_AzimuthBarWindow::setFlagS_Range(double value)
 // 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 {
-	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((630 / 2 - ui.label_Flag_W->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -171,7 +171,7 @@ void HUD_Map_AzimuthBarWindow::setFlagN_Range(double value)
 // 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 {
-	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_W->width() / 2) * value));
+	int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((630 / 2 - ui.label_Flag_W->width() / 2) * value));
 
 	if (value >= -1 && value <= 1)
 	{
@@ -187,7 +187,7 @@ void HUD_Map_AzimuthBarWindow::setFlagW_Range(double value)
 // 方向标签移动
 void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 {
-	int x = static_cast<int>(this->width()/2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - ui.label_Flag_E->width() / 2) * value));
+	int x = arg2range(value) - ui.label_Flag_E->width() / 2;
 
 	if (value >= -1 && value <= 1)
 	{
@@ -204,17 +204,12 @@ void HUD_Map_AzimuthBarWindow::setFlagE_Range(double value)
 void HUD_Map_AzimuthBarWindow::setFlagStar_Range(double value)
 {
 	QLabel* thisLabel = ui.label_Flag_Star_A;
-	int x = static_cast<int>(this->width() / 2 - thisLabel->width() / 2 + ((this->width() / 2 - thisLabel->width() / 2) * value));
+	int x = arg2range(value) - thisLabel->width() / 2;
+	value=range2range(value);
 
-	if (value >= -1 && value <= 1)
-	{
-		thisLabel->move(x, thisLabel->y());
-		thisLabel->show();
-	}
-	else
-	{
-		thisLabel->hide();
-	}
+	moveFlag(ui.label_Flag_Star_A, value + 2.0 / 3.0);
+	moveFlag(ui.label_Flag_Star_B, value + 4.0/3.0);
+	moveFlag(ui.label_Flag_Star_C, value + 6.0/3.0);
 }
 
 // 联动显示
@@ -267,68 +262,29 @@ void HUD_Map_AzimuthBarWindow::setMessage(QString message)
 	double dis = 0;
 	double arg = 0;
 	const double rad2degScale = 180 / 3.1415926535;
-	//获取神瞳数量
 
-	if (js.contains("n"))
+	//神瞳数量
+	num=js["n"].toInt();
+
+	if (num > 0)
 	{
-		QJsonValue numValue= js.take("n");
-		if (numValue.isDouble())
+		QJsonArray listArray = js["list"].toArray();
+
+		for (int i = 0; i < num; i++)
 		{
-			//神瞳数量
-			num = numValue.toVariant().toInt();
-			if (num > 0)
-			{
-				//获取神瞳坐标数组
-				if (js.contains("list"))
-				{
-					QJsonValue listValue = js.take("list");
-					if (listValue.isArray())
-					{
-						//神瞳坐标数组
-						QJsonArray listArray = listValue.toArray();
-						for (int i = 0; i < num; i++)
-						{
-							//获取神瞳坐标
-							QJsonValue StarOneValue = listArray[i];
-							if (StarOneValue.isArray())
-							{
-								//神瞳坐标 [double,double]
-								QJsonArray StarValue = StarOneValue.toArray();
-								QJsonValue xValue = StarValue[0];
-								QJsonValue yValue = StarValue[1];
+			//神瞳坐标
+			double x = listArray[i].toArray()[0].toDouble();
+			double y = listArray[i].toArray()[1].toDouble();
+			dis = sqrt(x * x + y * y);
 
+			arg = atan2(-y, x)*rad2degScale;
 
-								//listArrayValue[]
-								if (xValue.isDouble() && yValue.isDouble())
-								{
-									//神瞳坐标
-									double x = xValue.toDouble();
-									double y = yValue.toDouble();
-									dis = sqrt(x * x + y * y);
+			arg = arg - 90; //从屏幕空间左侧水平线为0度转到竖直向上为0度
+			if (arg < -180.0)arg = arg + 360;
 
-									arg = atan2(-y, x)*rad2degScale;
-
-									arg = arg - 90; //从屏幕空间左侧水平线为0度转到竖直向上为0度
-									if (arg < -180.0)arg = arg + 360;
-
-									setFlagObject(i, arg, dis);
-									//ui.Flag_Image->show();
-									ui.Flag_Image->hide();
-									//ui.Flag_Message->setText(QString::number(dis) + " " + QString::number(arg));
-									ui.Flag_Message->setText(" ");
-
-								}
-							}
-						}
-					}
-				}
-			}
-			else
-			{
-
-				ui.Flag_Image->hide();
-				ui.Flag_Message->setText("");
-			}
+			setFlagObject(i, arg, dis);
+			ui.Flag_Image->hide();
+			ui.Flag_Message->setText(" ");
 		}
 	}
 	else
@@ -336,6 +292,7 @@ void HUD_Map_AzimuthBarWindow::setMessage(QString message)
 		ui.Flag_Image->hide();
 		ui.Flag_Message->setText("");
 	}
+
 }
 
 void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  double ObjectDistance)
@@ -352,10 +309,11 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 
 			Arrow_AvatarObject->setFlagObjectRotation(-arg);
 
-			int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((this->width() / 2 - Flags_ObjectList[id]->width() / 2) * value));
+			int x = static_cast<int>(this->width() / 2 - ui.label_Flag_E->width() / 2 + ((630 / 2 - Flags_ObjectList[id]->width() / 2) * value));
 
 			if (value >= -1 && value <= 1)
 			{
+				Flags_ObjectList[id]->show();
 				Flags_ObjectList[id]->move(x, 5);
 				Flags_ObjectList[id]->setShowText(true);
 				Flags_ObjectList[id]->setDistance(ObjectDistance);
@@ -363,8 +321,9 @@ void HUD_Map_AzimuthBarWindow::setFlagObject(int id, double ObjectRotation,  dou
 			}
 			else
 			{
-				Flags_ObjectList[id]->setShowText(true);
-				Flags_ObjectList[id]->setTransparent(0.5);
+				Flags_ObjectList[id]->hide();
+				//Flags_ObjectList[id]->setShowText(false);
+				//Flags_ObjectList[id]->setTransparent(0);
 			}
 
 		}
@@ -388,10 +347,6 @@ void HUD_Map_AzimuthBarWindow::setFlagN(double RelativeAngle)
 }
 void HUD_Map_AzimuthBarWindow::setFlagW(double RelativeAngle)
 {
-	if (RelativeAngle < -180)
-	{
-		RelativeAngle = RelativeAngle + 360;
-	}
 	double value = arg2arg(RelativeAngle) / (avatarRotationRange / 2.0);
 	setFlagW_Range(value);
 }

@@ -22,6 +22,7 @@ void HUD_Map_CircularWindow::paintEvent(QPaintEvent *)
 	painter.drawImage(0, 0, RenderImage);
 }
 
+#ifdef OpencvVis
 
 #include <opencv2/opencv.hpp>
 using namespace cv;
@@ -463,3 +464,4 @@ Mat calMask(int col, int row, double r, int flag)
 	}
 	return out;
 }
+#endif

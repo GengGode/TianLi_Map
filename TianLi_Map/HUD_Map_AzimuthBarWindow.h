@@ -26,7 +26,7 @@ private:
 	bool isShow = true;
 	bool isTopMost = true;
 	
-	double avatarRotationRange = 97.14;
+	double avatarRotationRange = 90;
 	double avatarRotation = 0;
 #ifdef _DEBUG
 	//QGraphicsDropShadowEffect *test;
@@ -66,6 +66,34 @@ public slots:
 	void setFlagStar(double RelativeAngle);
 
 private:
+	void moveFlag(QLabel* thisLabel, double value)
+	{
+		int x = static_cast<int>(this->width() / 2 - thisLabel->width() / 2 + ((630 / 2 - thisLabel->width() / 2) * value));
+
+		if (value >= -1 && value <= 1)
+		{
+			thisLabel->move(x, thisLabel->y());
+			thisLabel->show();
+		}
+		else
+		{
+			thisLabel->hide();
+		}
+	}
+
+	int arg2range(double value)
+	{
+		return static_cast<int>(this->width() / 2 + (315) * value);
+	}
+	double range2range(double value)
+	{
+		int rangeFlag = value > 0 ? 1 : -1;
+		int rangeInteger = static_cast<int>(value);
+		double rangeDecimal = value - rangeInteger;
+		rangeInteger = rangeInteger % 2;
+		double res = rangeInteger* rangeFlag + rangeDecimal;
+		return res;
+	}
 	double arg2arg(double arg) 
 	{
 		int argInteger = static_cast<int>(arg);
