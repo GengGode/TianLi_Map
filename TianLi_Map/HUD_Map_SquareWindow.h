@@ -21,5 +21,5 @@ private:
 	void paintEvent(QPaintEvent*);
 
 public slots:
-	void setAvatarPos(double x, double y);
+	//void setAvatarPos(double x, double y);
 };

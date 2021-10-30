@@ -167,13 +167,17 @@ void TianLi_Map::test1()
 	{
 		isc = true;
 		static double a = 0;
-		bool res = GetRotation(a);
-		char buff[1024] = {'\0'};
-
+		static double x = 0, y = 0;
+		float xx, yy, aa;
+		bool res = false;
+		
+		res = GetTransform(xx,yy,aa);
 		if (res)
 		{
-			WidgetMapAB->setAvatarRotation(a);
+			WidgetMapAB->setAvatarRotation(aa);
 			WidgetMapAB->ShowMe();
+			WidgetMapC->setAvatarPos(xx, yy);
+			WidgetMapC->showMe();
 		}
 		else
 		{
@@ -181,8 +185,45 @@ void TianLi_Map::test1()
 			if (!ui.checkBox->isChecked())
 			{
 				WidgetMapAB->HideMe();
+				WidgetMapC->hideMe();
 			}
 		}
+		
+		//res = GetRotation(a);
+
+		//if (res)
+		//{
+		//	WidgetMapAB->setAvatarRotation(a);
+		//	WidgetMapAB->ShowMe();
+		//}
+		//else
+		//{
+		//	int ec = GetLastErr();
+		//	if (!ui.checkBox->isChecked())
+		//	{
+		//		WidgetMapAB->HideMe();
+		//	}
+		//}
+
+		
+		//res = GetPosition(x, y);
+
+		//if (res)
+		//{
+		//	WidgetMapC->setAvatarPos(x,y);
+		//	WidgetMapC->showMe();
+		//}
+		//else
+		//{
+		//	int ec = GetLastErr();
+		//	if (!ui.checkBox->isChecked())
+		//	{
+		//		WidgetMapC->hideMe();
+		//	}
+		//}
+
+		char buff[1024] = {'\0'};
+
 
 		res=GetStarJson(buff);
 		if (res)

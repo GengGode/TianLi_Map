@@ -1,6 +1,7 @@
 #include "HUD_Map_CircularWindow.h"
 
 #include <QPainter>
+#include <QMouseEvent>
 
 using namespace cv;
 
@@ -12,19 +13,61 @@ HUD_Map_CircularWindow::HUD_Map_CircularWindow(QWidget *parent)
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
-	MapSource = imread("GIMAP.png");
-	setAvatarPos(0, 0);
+	setMapSource(imread("GIMAP.png"));
+	setAvatarPos(2000, 2000);
 }
 
 HUD_Map_CircularWindow::~HUD_Map_CircularWindow()
 {
 }
 
+
+
+void HUD_Map_CircularWindow::mousePressEvent(QMouseEvent* event)
+{
+	if (event->button() == Qt::LeftButton)
+	{
+		m_Press = event->globalPos();
+		leftBtnClk = true;
+	}
+	event->ignore();
+}
+
+void HUD_Map_CircularWindow::mouseReleaseEvent(QMouseEvent* event)
+{
+	if (event->button() == Qt::LeftButton)
+	{
+		leftBtnClk = false;
+	}
+	event->ignore();
+}
+void HUD_Map_CircularWindow::mouseMoveEvent(QMouseEvent* event)
+{
+	if (leftBtnClk)
+	{
+		m_Move = event->globalPos();
+		this->move(this->pos() + m_Move - m_Press);
+
+		m_Press = m_Move;
+	}
+	event->ignore();
+	update();
+}
 void HUD_Map_CircularWindow::paintEvent(QPaintEvent *)
 {
 	//设置画面为地图
 	QPainter painter(this);
 	painter.drawImage(0, 0, RenderImage);
+}
+
+void HUD_Map_CircularWindow::showMe()
+{
+	show();
+}
+
+void HUD_Map_CircularWindow::hideMe()
+{
+	hide();
 }
 
 void HUD_Map_CircularWindow::updateImage()
@@ -36,7 +79,9 @@ void HUD_Map_CircularWindow::updateImage()
 	//split(RES.MAINMASK, mv1);
 	//mv0.push_back(mv1[0]);
 	//merge(mv0, MainMat);
-	RenderImage = QImage((uchar*)(MainMat.data), MainMat.cols, MainMat.rows, MainMat.cols * (MainMat.channels()), QImage::Format_ARGB32);
+	//RenderImage = QImage((uchar*)(MainMat.data), MainMat.cols, MainMat.rows, MainMat.cols * (MainMat.channels()), QImage::Format_ARGB32);
+	RenderImage = QImage((uchar*)(MainMat.data), MainMat.cols, MainMat.rows, MainMat.cols * (MainMat.channels()), QImage::Format_BGR888);
+	update(); 
 }
 
 void HUD_Map_CircularWindow::setMapSource(const cv::Mat mapSource)
@@ -53,6 +98,7 @@ void HUD_Map_CircularWindow::setAvatarPos(double x, double y)
 	static Mat minMap;
 
 	//需要能越过边界，否则大范围显示时无法保证角色箭头处于正确位置
+	zerosMinMap = Point2d(x/2.557+ WorldCenter_X, y/2.557+ WorldCenter_Y);
 
 	Point minMapPoint = Point(0, 0);
 
@@ -60,7 +106,7 @@ void HUD_Map_CircularWindow::setAvatarPos(double x, double y)
 	Point2d reAutoMapCenter = Size(this->width(), this->height())/2;//autoMapCenter;
 	reMapSize.width = (reMapSize.width * scale);
 	reMapSize.height = (reMapSize.height * scale);
-	reAutoMapCenter = Point2d(this->width(), this->height()) * scale;//autoMapCenter * MET.scale;
+	//reAutoMapCenter = Point2d(this->width(), this->height()) * scale;//autoMapCenter * MET.scale;
 
 	Point2d LT = zerosMinMap - reAutoMapCenter;
 	Point2d RB = zerosMinMap + Point2d(reMapSize) - reAutoMapCenter;
@@ -87,6 +133,8 @@ void HUD_Map_CircularWindow::setAvatarPos(double x, double y)
 
 	cv::resize(MapSource(minMapRect), minMap, Size(this->width(), this->height()));
 	minMap.copyTo(MainMat);
+	updateImage();
+
 	//return minMap;
 }
 

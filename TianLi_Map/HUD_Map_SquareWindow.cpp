@@ -1,5 +1,7 @@
 #include "HUD_Map_SquareWindow.h"
 
+#include <QPainter>
+
 HUD_Map_SquareWindow::HUD_Map_SquareWindow(QWidget *parent)
 	: QWidget(parent)
 {
@@ -11,4 +13,11 @@ HUD_Map_SquareWindow::HUD_Map_SquareWindow(QWidget *parent)
 
 HUD_Map_SquareWindow::~HUD_Map_SquareWindow()
 {
+}
+
+void HUD_Map_SquareWindow::paintEvent(QPaintEvent*)
+{
+	//设置画面为地图
+	QPainter painter(this);
+	painter.drawImage(0, 0, RenderImage);
 }
