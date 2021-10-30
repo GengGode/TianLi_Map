@@ -49,8 +49,9 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.14.2_msvc2017_64</QtInstall>
-    <QtModules>core;gui;serialport;widgets</QtModules>
+    <QtModules>core;gui;widgets;serialport</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
+    <QtDeploy>false</QtDeploy>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DeStatic|x64'" Label="QtSettings">
     <QtInstall>5.14.2_msvc2017_64_static</QtInstall>

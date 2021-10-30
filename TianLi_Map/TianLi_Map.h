@@ -51,6 +51,7 @@ private:
 
 #pragma region Test
 	QTimer *t = nullptr;
+
 #pragma endregion
 
 private:

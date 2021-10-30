@@ -2,6 +2,8 @@
 
 #include <QPainter>
 
+using namespace cv;
+
 HUD_Map_CircularWindow::HUD_Map_CircularWindow(QWidget *parent)
 	: QWidget(parent)
 {
@@ -9,6 +11,9 @@ HUD_Map_CircularWindow::HUD_Map_CircularWindow(QWidget *parent)
 	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup | Qt::Tool);
 	this->setAttribute(Qt::WA_TranslucentBackground, true);
 	this->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
+	MapSource = imread("GIMAP.png");
+	setAvatarPos(0, 0);
 }
 
 HUD_Map_CircularWindow::~HUD_Map_CircularWindow()
@@ -20,6 +25,69 @@ void HUD_Map_CircularWindow::paintEvent(QPaintEvent *)
 	//设置画面为地图
 	QPainter painter(this);
 	painter.drawImage(0, 0, RenderImage);
+}
+
+void HUD_Map_CircularWindow::updateImage()
+{
+	//std::vector<Mat> mv0;
+	//std::vector<Mat> mv1;
+	//通道分离
+	//split(MainMat, mv0);
+	//split(RES.MAINMASK, mv1);
+	//mv0.push_back(mv1[0]);
+	//merge(mv0, MainMat);
+	RenderImage = QImage((uchar*)(MainMat.data), MainMat.cols, MainMat.rows, MainMat.cols * (MainMat.channels()), QImage::Format_ARGB32);
+}
+
+void HUD_Map_CircularWindow::setMapSource(const cv::Mat mapSource)
+{
+	this->MapSource = mapSource;
+
+	mapSize = this->MapSource.size();
+}
+
+void HUD_Map_CircularWindow::setAvatarPos(double x, double y)
+{
+	//MainMat = GetMatRange(x, y);
+
+	static Mat minMap;
+
+	//需要能越过边界，否则大范围显示时无法保证角色箭头处于正确位置
+
+	Point minMapPoint = Point(0, 0);
+
+	Size reMapSize = Size(this->width(), this->height()); // autoMapSize;
+	Point2d reAutoMapCenter = Size(this->width(), this->height())/2;//autoMapCenter;
+	reMapSize.width = (reMapSize.width * scale);
+	reMapSize.height = (reMapSize.height * scale);
+	reAutoMapCenter = Point2d(this->width(), this->height()) * scale;//autoMapCenter * MET.scale;
+
+	Point2d LT = zerosMinMap - reAutoMapCenter;
+	Point2d RB = zerosMinMap + Point2d(reMapSize) - reAutoMapCenter;
+
+	minMapPoint = LT;
+
+	if (LT.x < 0)
+	{
+		minMapPoint.x = 0;
+	}
+	if (LT.y < 0)
+	{
+		minMapPoint.y = 0;
+	}
+	if (RB.x > mapSize.width)
+	{
+		minMapPoint.x = mapSize.width - reMapSize.width;
+	}
+	if (RB.y > mapSize.height)
+	{
+		minMapPoint.y = mapSize.height - reMapSize.height;
+	}
+	minMapRect = Rect(minMapPoint, reMapSize);
+
+	cv::resize(MapSource(minMapRect), minMap, Size(this->width(), this->height()));
+	minMap.copyTo(MainMat);
+	//return minMap;
 }
 
 #ifdef OpencvVis

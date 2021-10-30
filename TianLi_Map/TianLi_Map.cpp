@@ -70,6 +70,7 @@ void TianLi_Map::CreateWidgetMapS()
 		WidgetMapS->show();
 		//****//
 		WidgetMapS->move(static_cast<int>((1920 - WidgetMapS->width()) / 2.0), 0);
+
 		WidgetMapS->update();
 	}
 	else
@@ -84,8 +85,9 @@ void TianLi_Map::CreateWidgetMapC()
 		WidgetMapC = new HUD_Map_CircularWindow();
 		WidgetMapC->show();
 		//****//
-		WidgetMapS->move(static_cast<int>((1920 - WidgetMapC->width()) / 2.0), 0);
-		WidgetMapS->update();
+		WidgetMapC->move(static_cast<int>((1920 - WidgetMapC->width()) / 2.0), 0);
+		WidgetMapC->update();
+		//WidgetMapC->setMapSource();
 	}
 	else
 	{

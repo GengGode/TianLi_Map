@@ -13,4 +13,13 @@ public:
 
 private:
 	Ui::HUD_Map_SquareWindow ui;
+
+private:
+	QImage RenderImage;
+
+private:
+	void paintEvent(QPaintEvent*);
+
+public slots:
+	void setAvatarPos(double x, double y);
 };
