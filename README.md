@@ -1,5 +1,6 @@
 # TianLi_Map
 天理地图
+# 该项目转到[天理地图](https://github.com/GengGode/GenshinImpact_TianLi)继续开发
 
 # 计划中的三种地图模式
 
